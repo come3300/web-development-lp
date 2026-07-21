@@ -1,0 +1,6 @@
+<svg width="290" height="52" viewBox="0 0 290 52" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="WEB-Tenasu">
+  <rect x="2" y="2" width="48" height="48" rx="14" fill="#211D1A"></rect>
+  <path d="M14 33 L22 25 L29 30 L38 18" stroke="#F4F1EA" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path>
+  <circle cx="38" cy="18" r="3.6" fill="#C75D3C"></circle>
+  <text x="64" y="34" font-family="&#39;Zen Kaku Gothic New&#39;,&#39;Noto Sans JP&#39;,sans-serif" font-size="26" font-weight="700" letter-spacing="0.4" fill="#211D1A">WEB-Tenasu</text>
+</svg>

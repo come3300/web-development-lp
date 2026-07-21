@@ -1,0 +1,7 @@
+:root{--font-body: var(--font-noto), sans-serif;--font-display: var(--font-anton), sans-serif;}
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:#f4f6f8;color:#0e1b2c;font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
+a{color:#0e1b2c;text-decoration:none;}
+a:hover{color:#2f6bff;}
+img{max-width:100%;display:block;}
