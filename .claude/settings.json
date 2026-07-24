@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -)",
+      "Bash(npx tsc *)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(curl -sf http://localhost:3000)",
+      "Bash(break)",
+      "Bash(which chromium-cli *)",
+      "Read(//private/tmp/claude-501/bundled-skills/2.1.216/**)",
+      "Read(//Applications/**)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npm install *)",
+      "Bash(node /private/tmp/claude-501/-Users-yonekuradaisuke----programing-nextjs-web-development-lp/0e9be13d-2213-4dda-a7f4-b7bfc8737551/scratchpad/shot.mjs http://localhost:3000/ http://localhost:3000/strength http://localhost:3000/works http://localhost:3000/price http://localhost:3000/flow http://localhost:3000/faq http://localhost:3000/contact)",
+      "Bash(cp /private/tmp/claude-501/-Users-yonekuradaisuke----programing-nextjs-web-development-lp/0e9be13d-2213-4dda-a7f4-b7bfc8737551/scratchpad/shot.mjs \"/Users/yonekuradaisuke/開発/programing/nextjs/web-development-lp/shot.mjs\")",
+      "Bash(node shot.mjs http://localhost:3000/ http://localhost:3000/strength http://localhost:3000/works http://localhost:3000/price http://localhost:3000/flow http://localhost:3000/faq http://localhost:3000/contact)",
+      "Bash(curl -s http://localhost:3000/ -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:3000/favicon.ico -o /dev/null -w \"favicon: %{http_code}\\\\n\")"
+    ]
+  }
+}
