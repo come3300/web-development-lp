@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { ImagePlaceholder } from "./ImagePlaceholder";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
@@ -88,9 +87,9 @@ export class HomeView extends React.Component {
             <Link href="/works" style={{ background: "transparent", color: "#0e1b2c", fontWeight: 700, fontSize: "1.05rem", padding: "18px 40px", border: "1.5px solid #0e1b2c" }}>制作実績を見る</Link>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: 0, marginTop: "clamp(56px,9vh,96px)", borderTop: "2px solid #0e1b2c" }}>
-            <div style={{ padding: "28px 24px 36px", borderRight: "1px solid rgba(14,27,44,0.12)" }}><div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", color: "#5a6b80", marginBottom: 8 }}>制作実績</div><div style={{ fontFamily: "var(--font-display)", fontSize: "3.2rem", lineHeight: 1 }}>120<span style={{ fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 700 }}>件+</span></div></div>
-            <div style={{ padding: "28px 24px 36px", borderRight: "1px solid rgba(14,27,44,0.12)" }}><div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", color: "#5a6b80", marginBottom: 8 }}>保守契約 継続率</div><div style={{ fontFamily: "var(--font-display)", fontSize: "3.2rem", lineHeight: 1 }}>92<span style={{ fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 700 }}>%</span></div></div>
-            <div style={{ padding: "28px 24px 36px" }}><div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", color: "#5a6b80", marginBottom: 8 }}>最短納期</div><div style={{ fontFamily: "var(--font-display)", fontSize: "3.2rem", lineHeight: 1 }}>2<span style={{ fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 700 }}>週間</span></div></div>
+            <div style={{ padding: "28px 24px 36px", borderRight: "1px solid rgba(14,27,44,0.12)" }}><div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", color: "#5a6b80", marginBottom: 8 }}>最短納期</div><div style={{ fontFamily: "var(--font-display)", fontSize: "3.2rem", lineHeight: 1 }}>2<span style={{ fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 700 }}>週間</span></div></div>
+            <div style={{ padding: "28px 24px 36px", borderRight: "1px solid rgba(14,27,44,0.12)" }}><div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", color: "#5a6b80", marginBottom: 8 }}>制作費</div><div style={{ fontFamily: "var(--font-display)", fontSize: "3.2rem", lineHeight: 1 }}>5<span style={{ fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 700 }}>万円〜</span></div></div>
+            <div style={{ padding: "28px 24px 36px" }}><div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", color: "#5a6b80", marginBottom: 8 }}>月額費用</div><div style={{ fontFamily: "var(--font-display)", fontSize: "3.2rem", lineHeight: 1 }}>0<span style={{ fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 700 }}>円</span></div></div>
           </div>
         </div>
       </section>
@@ -118,12 +117,15 @@ export class HomeView extends React.Component {
               ["01", "最短1〜2週間の圧倒的スピード", "一般的な制作会社は営業・ディレクター・デザイナー・エンジニアと確認工程が多く1〜3ヶ月かかりがち。TSUKURUは少人数体制で意思決定が速く、Basicプランなら最短1週間で公開できます。", "44px 0", "1.5px solid #0e1b2c"],
               ["02", "現役エンジニア直接開発の自由度", "テンプレート頼みではなく、現役エンジニアがコードを直接書くからこそ、独自機能・複雑な要件・こだわりの動きにも柔軟に対応できます。", "44px 0", "1px solid rgba(14,27,44,0.15)"],
               ["03", "低コストで、よりリッチな仕上がり", "営業・ディレクションにかかる中間コストを省く分、同じ予算でもデザイン・機能により多くを投資でき、制作会社より作り込んだサイトになります。", "44px 0", "1px solid rgba(14,27,44,0.15)"],
-              ["04", "公開後もPDCAで併走", "アクセス解析レポートと改善提案を毎月お届け。数値に基づいた改善サイクルを回し続けることで、公開後もサイトを成長させます。", "44px 0", "1px solid rgba(14,27,44,0.15)"],
-            ].map(([num, title, body, pad, bt], i) => (
+              ["04", "公開後もPDCAで併走", "公開後も細かな修正やトラブル対応、追加機能の実装まで徹底サポートします。", "44px 0", "1px solid rgba(14,27,44,0.15)", "※ 内容によっては追加料金をいただく場合があります"],
+            ].map(([num, title, body, pad, bt, note], i) => (
               <div key={num} style={{ display: "grid", gridTemplateColumns: "140px 1fr 1.2fr", gap: "clamp(20px,3vw,48px)", padding: pad, borderTop: bt, borderBottom: i === 3 ? "1.5px solid #0e1b2c" : undefined, alignItems: "start" }}>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,5vw,4.5rem)", lineHeight: 0.9, color: "#2f6bff" }}>{num}</div>
                 <h3 style={{ fontWeight: 900, fontSize: "clamp(1.2rem,2vw,1.5rem)", lineHeight: 1.7, margin: 0 }}>{title}</h3>
-                <p style={{ fontSize: "0.95rem", lineHeight: 2.1, color: "#3c4a5c", margin: 0 }}>{body}</p>
+                <div>
+                  <p style={{ fontSize: "0.95rem", lineHeight: 2.1, color: "#3c4a5c", margin: 0 }}>{body}</p>
+                  {note && <p style={{ fontSize: "0.78rem", fontWeight: 500, lineHeight: 1.9, color: "#5a6b80", margin: "8px 0 0" }}>{note}</p>}
+                </div>
               </div>
             ))}
           </div>
@@ -134,36 +136,10 @@ export class HomeView extends React.Component {
         </div>
       </section>
 
-      <section id="works" style={{ padding: "clamp(70px,11vh,130px) clamp(20px,4vw,56px)", background: "#f4f6f8" }}>
-        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", flexWrap: "wrap", gap: 16, marginBottom: 56 }}>
-            <div><span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>03 — WORKS</span><h2 style={{ fontWeight: 900, fontSize: "clamp(1.8rem,3.6vw,2.8rem)", lineHeight: 1.5, margin: "16px 0 0" }}>制作実績</h2></div>
-            <span style={{ fontSize: "0.85rem", fontWeight: 500, color: "#5a6b80" }}>※ 守秘義務のある案件はお問い合わせ時に開示します</span>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: "clamp(20px,2.5vw,36px)", alignItems: "start" }}>
-            {[
-              { m: 96, cat: "CORPORATE", y: "2025", title: "製造業コーポレートサイト リニューアル", body: "問い合わせ数 前年比 2.4倍。検索流入を軸に導線を再設計。" },
-              { m: 48, cat: "RECRUIT", y: "2024", title: "建設会社 採用サイト新規制作", body: "若手応募が月0→5件に。社員取材コンテンツを中心に構成。" },
-              { m: 0, cat: "LP", y: "2024", title: "D2CブランドLP 制作・広告運用", body: "CVR 1.2%→3.1%。ABテストを重ねてファーストビューを最適化。" },
-            ].map((w, i) => (
-              <div key={w.title} style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: w.m }}>
-                <div style={{ height: 240 }}><ImagePlaceholder label={`実績サムネイル ${i + 1}`} /></div>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#5a6b80" }}><span>{w.cat}</span><span>·</span><span>{w.y}</span></div>
-                <h3 style={{ fontWeight: 900, fontSize: "1.15rem", margin: 0 }}>{w.title}</h3>
-                <p style={{ fontSize: "0.88rem", lineHeight: 1.9, color: "#3c4a5c", margin: 0 }}>{w.body}</p>
-              </div>
-            ))}
-          </div>
-          <div style={{ display: "flex", justifyContent: "center", marginTop: 56 }}>
-            <Link href="/works" style={{ border: "1.5px solid #0e1b2c", color: "#0e1b2c", fontWeight: 700, fontSize: "0.95rem", padding: "16px 40px", display: "inline-flex", alignItems: "center", gap: 10 }}>実績一覧をもっと見る<span>→</span></Link>
-          </div>
-        </div>
-      </section>
-
       <section id="price" style={{ padding: "clamp(70px,11vh,130px) clamp(20px,4vw,56px)", background: "#fff", position: "relative", overflow: "hidden" }}>
         <canvas ref={this.r.price} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" }} />
         <div style={{ position: "relative", maxWidth: 1240, margin: "0 auto" }}>
-          <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>04 — PRICE</span>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>03 — PRICE</span>
           <h2 style={{ fontWeight: 900, fontSize: "clamp(1.8rem,3.6vw,2.8rem)", lineHeight: 1.5, margin: "16px 0 12px" }}>プラン・料金</h2>
           <p style={{ fontSize: "0.95rem", fontWeight: 500, lineHeight: 2, color: "#3c4a5c", margin: "0 0 40px", maxWidth: "42em" }}>必要な工程を整理し、各工程でどのような作業を行うかを明確にした上で費用を算出します。以下はお見積りの目安となるプラン例——ご予算・制作背景・目的に応じて柔軟にご提案します。</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: 1, background: "rgba(14,27,44,0.15)", border: "1px solid rgba(14,27,44,0.15)", marginBottom: 56 }}>
@@ -191,7 +167,7 @@ export class HomeView extends React.Component {
 
           <h3 style={{ fontWeight: 900, fontSize: "1.4rem", margin: "0 0 24px" }}>プラン一覧</h3>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: "clamp(20px,2.5vw,32px)", alignItems: "start" }}>
-            <div style={{ border: "1.5px solid #0e1b2c", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 48 }}>
+            <div style={{ border: "1.5px solid #0e1b2c", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 96 }}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "0.95rem", letterSpacing: "0.2em", color: "#5a6b80" }}>PLAN 01</div>
               <h3 style={{ fontWeight: 900, fontSize: "1.3rem", margin: 0 }}>Basic</h3>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", lineHeight: 1 }}>¥50,000<span style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 700 }}>〜</span></div>
@@ -204,7 +180,7 @@ export class HomeView extends React.Component {
               </div>
               <Link href="/contact" style={{ border: "1.5px solid #0e1b2c", color: "#0e1b2c", fontWeight: 700, fontSize: "0.95rem", padding: "14px 0", textAlign: "center" }}>相談する →</Link>
             </div>
-            <div style={{ background: "#0e1b2c", color: "#fff", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, position: "relative" }}>
+            <div style={{ background: "#0e1b2c", color: "#fff", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 48, position: "relative" }}>
               <div style={{ position: "absolute", top: 0, right: 0, background: "#2f6bff", color: "#fff", fontWeight: 700, fontSize: "0.75rem", letterSpacing: "0.14em", padding: "8px 16px" }}>RECOMMENDED</div>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "0.95rem", letterSpacing: "0.2em", color: "rgba(255,255,255,0.55)" }}>PLAN 02</div>
               <h3 style={{ fontWeight: 900, fontSize: "1.3rem", margin: 0 }}>Standard</h3>
@@ -218,7 +194,7 @@ export class HomeView extends React.Component {
               </div>
               <Link href="/contact" style={{ background: "#2f6bff", color: "#fff", fontWeight: 700, fontSize: "0.95rem", padding: "14px 0", textAlign: "center" }}>相談する →</Link>
             </div>
-            <div style={{ border: "1.5px solid #0e1b2c", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 48 }}>
+            <div style={{ border: "1.5px solid #0e1b2c", padding: "40px 32px 56px", display: "flex", flexDirection: "column", gap: 18, marginTop: 0 }}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "0.95rem", letterSpacing: "0.2em", color: "#5a6b80" }}>PLAN 03</div>
               <h3 style={{ fontWeight: 900, fontSize: "1.3rem", margin: 0 }}>Premium</h3>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", lineHeight: 1 }}>¥200,000<span style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 700 }}>〜</span></div>
@@ -241,7 +217,7 @@ export class HomeView extends React.Component {
 
       <section id="flow" style={{ padding: "clamp(70px,11vh,130px) clamp(20px,4vw,56px)", background: "#f4f6f8" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
-          <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>05 — FLOW</span>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>04 — FLOW</span>
           <h2 style={{ fontWeight: 900, fontSize: "clamp(1.8rem,3.6vw,2.8rem)", lineHeight: 1.5, margin: "16px 0 56px" }}>制作の流れ</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, minmax(0,1fr))", gap: 1, background: "rgba(14,27,44,0.15)", border: "1px solid rgba(14,27,44,0.15)" }}>
             {[["01", "ヒアリング", "目的・課題・予算を整理。相談と見積りは無料です。"], ["02", "調査・設計", "競合・キーワードを調査し、サイトマップと仕様書を作成。"], ["03", "デザイン", "ワイヤーフレームを基盤に、伝わるデザインへ。"], ["04", "実装・検証", "SEO・表示速度・全端末での表示を検証して公開。"], ["05", "運用・改善", "解析レポートと改善提案で、成果までPDCAを回す。"]].map(([num, title, body]) => (
@@ -256,7 +232,7 @@ export class HomeView extends React.Component {
 
       <section id="faq" style={{ padding: "clamp(70px,11vh,130px) clamp(20px,4vw,56px)", background: "#fff" }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
-          <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>06 — FAQ</span>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>05 — FAQ</span>
           <h2 style={{ fontWeight: 900, fontSize: "clamp(1.8rem,3.6vw,2.8rem)", lineHeight: 1.5, margin: "16px 0 48px" }}>よくあるご質問</h2>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {[["相談や見積りに費用はかかりますか。", "いずれも無料です。「まだ何も決まっていない」段階でも問題ありません。"], ["Webの知識がなくても依頼できますか。", "はい。ヒアリングの上、必要なものはこちらからご提案します。専門用語は使わずにご説明します。"], ["自分たちで更新できるようにしたいのですが。", "CMS(更新システム)を導入し、操作レクチャーまで行います。既存サイトへの導入も可能です。"], ["他社で制作したサイトの修正・リニューアルも可能ですか。", "可能です。現状の課題を整理した上で、部分改修かリニューアルか最適な形をご提案します。"]].map(([q, a], i, arr) => (
@@ -276,7 +252,7 @@ export class HomeView extends React.Component {
         <canvas ref={this.r.cta} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: -30, right: -20, fontFamily: "var(--font-display)", fontSize: "clamp(5rem,13vw,12rem)", lineHeight: 0.9, color: "transparent", WebkitTextStroke: "1.5px rgba(255,255,255,0.12)", userSelect: "none", pointerEvents: "none" }}>CONTACT</div>
         <div style={{ position: "relative", maxWidth: 1240, margin: "0 auto" }}>
-          <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>07 — CONTACT</span>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>06 — CONTACT</span>
           <h2 style={{ fontWeight: 900, fontSize: "clamp(2rem,4.4vw,3.4rem)", lineHeight: 1.5, margin: "20px 0 24px" }}>まずはお気軽に、<br />お問い合わせください。</h2>
           <p style={{ fontSize: "1rem", lineHeight: 2.1, color: "rgba(255,255,255,0.75)", maxWidth: "36em", margin: "0 0 44px" }}>ご相談・お見積りは無料です。現状のサイトの診断だけでも承ります。営業目的のしつこい連絡は一切しません。</p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>

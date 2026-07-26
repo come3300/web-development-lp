@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   description: "制作会社に頼むより、速く・自由に・安く。現役エンジニアが直接開発するTSUKURUならではの4つの強みと、制作会社との比較を紹介します。",
 };
 
-const STRENGTHS: [string, string, string, string][] = [
+const STRENGTHS: [string, string, string, string, string?][] = [
   ["01", "最短1〜2週間の圧倒的スピード", "一般的な制作会社は営業・ディレクター・デザイナー・エンジニアと確認工程が多く1〜3ヶ月かかりがち。TSUKURUは少人数体制で意思決定が速く、Basicプランなら最短1週間で公開できます。要件が固まっている案件では着手から数日で初稿をお見せすることも可能です。", "最短納期 1週間〜"],
   ["02", "現役エンジニア直接開発の自由度", "テンプレート頼みではなく、現役エンジニアがコードを直接書くからこそ、独自機能・複雑な要件・こだわりの動きにも柔軟に対応できます。会員機能・予約システム・外部APIとの連携なども個別に設計・実装します。", "対応範囲 コーディング全域"],
   ["03", "低コストで、よりリッチな仕上がり", "営業・ディレクションにかかる中間コストを省く分、同じ予算でもデザイン・機能により多くを投資でき、制作会社より作り込んだサイトになります。見積りの内訳も工程ごとに開示するため、費用の使いみちが明確です。", "制作費 5万円〜"],
-  ["04", "公開後もPDCAで併走", "アクセス解析レポートと改善提案を毎月お届け。数値に基づいた改善サイクルを回し続けることで、公開後もサイトを成長させます。保守契約はいつでも解約可能で、囲い込みは一切ありません。", "保守継続率 92%"],
+  ["04", "公開後もPDCAで併走", "公開後も細かな修正やトラブル対応、追加機能の実装まで徹底サポートします。", "保守継続率 92%", "※ 内容によっては追加料金をいただく場合があります"],
 ];
 
 const AUDIENCE = [
@@ -55,11 +55,14 @@ export default function StrengthPage() {
           <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>4 REASONS</span>
           <h2 style={{ fontWeight: 900, fontSize: "clamp(1.8rem,3.6vw,2.8rem)", lineHeight: 1.5, margin: "16px 0 64px" }}>選ばれる4つの理由</h2>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {STRENGTHS.map(([num, title, body, stat], i) => (
+            {STRENGTHS.map(([num, title, body, stat, note], i) => (
               <div key={num} style={{ display: "grid", gridTemplateColumns: "140px 1fr 1.2fr 200px", gap: "clamp(20px,3vw,48px)", padding: "44px 0", borderTop: i === 0 ? "1.5px solid #0e1b2c" : "1px solid rgba(14,27,44,0.15)", borderBottom: i === STRENGTHS.length - 1 ? "1.5px solid #0e1b2c" : undefined, alignItems: "start" }}>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,5vw,4.5rem)", lineHeight: 0.9, color: "#2f6bff" }}>{num}</div>
                 <h3 style={{ fontWeight: 900, fontSize: "clamp(1.2rem,2vw,1.5rem)", lineHeight: 1.7, margin: 0 }}>{title}</h3>
-                <p style={{ fontSize: "0.95rem", lineHeight: 2.1, color: "#3c4a5c", margin: 0 }}>{body}</p>
+                <div>
+                  <p style={{ fontSize: "0.95rem", lineHeight: 2.1, color: "#3c4a5c", margin: 0 }}>{body}</p>
+                  {note && <p style={{ fontSize: "0.78rem", fontWeight: 500, lineHeight: 1.9, color: "#5a6b80", margin: "8px 0 0" }}>{note}</p>}
+                </div>
                 <div style={{ border: "1px solid rgba(14,27,44,0.15)", padding: "16px 20px" }}>
                   <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", color: "#5a6b80", marginBottom: 8 }}>DATA</div>
                   <div style={{ fontWeight: 900, fontSize: "1.15rem" }}>{stat}</div>

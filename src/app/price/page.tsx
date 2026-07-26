@@ -76,7 +76,7 @@ export default function PricePage() {
           <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>PLANS</span>
           <h2 style={{ fontWeight: 900, fontSize: "clamp(1.8rem,3.6vw,2.8rem)", lineHeight: 1.5, margin: "16px 0 56px" }}>プラン一覧</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: "clamp(20px,2.5vw,32px)", alignItems: "start", marginBottom: 24 }}>
-            <div style={{ border: "1.5px solid #0e1b2c", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 48 }}>
+            <div style={{ border: "1.5px solid #0e1b2c", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 96 }}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "0.95rem", letterSpacing: "0.2em", color: "#5a6b80" }}>PLAN 01</div>
               <h3 style={{ fontWeight: 900, fontSize: "1.3rem", margin: 0 }}>Basic</h3>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", lineHeight: 1 }}>¥50,000<span style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 700 }}>〜</span></div>
@@ -89,7 +89,7 @@ export default function PricePage() {
               </div>
               <Link href="/contact" style={{ border: "1.5px solid #0e1b2c", color: "#0e1b2c", fontWeight: 700, fontSize: "0.95rem", padding: "14px 0", textAlign: "center" }}>相談する →</Link>
             </div>
-            <div style={{ background: "#0e1b2c", color: "#fff", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, position: "relative" }}>
+            <div style={{ background: "#0e1b2c", color: "#fff", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 48, position: "relative" }}>
               <div style={{ position: "absolute", top: 0, right: 0, background: "#2f6bff", color: "#fff", fontWeight: 700, fontSize: "0.75rem", letterSpacing: "0.14em", padding: "8px 16px" }}>RECOMMENDED</div>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "0.95rem", letterSpacing: "0.2em", color: "rgba(255,255,255,0.55)" }}>PLAN 02</div>
               <h3 style={{ fontWeight: 900, fontSize: "1.3rem", margin: 0 }}>Standard</h3>
@@ -103,7 +103,7 @@ export default function PricePage() {
               </div>
               <Link href="/contact" style={{ background: "#2f6bff", color: "#fff", fontWeight: 700, fontSize: "0.95rem", padding: "14px 0", textAlign: "center" }}>相談する →</Link>
             </div>
-            <div style={{ border: "1.5px solid #0e1b2c", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 48 }}>
+            <div style={{ border: "1.5px solid #0e1b2c", padding: "40px 32px 56px", display: "flex", flexDirection: "column", gap: 18, marginTop: 0 }}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "0.95rem", letterSpacing: "0.2em", color: "#5a6b80" }}>PLAN 03</div>
               <h3 style={{ fontWeight: 900, fontSize: "1.3rem", margin: 0 }}>Premium</h3>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", lineHeight: 1 }}>¥200,000<span style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 700 }}>〜</span></div>

@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 
 const NAV = [
   { href: "/strength", label: "強み" },
-  { href: "/works", label: "実績" },
   { href: "/price", label: "料金" },
   { href: "/flow", label: "流れ" },
   { href: "/faq", label: "FAQ" },
