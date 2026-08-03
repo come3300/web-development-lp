@@ -6,6 +6,7 @@ const NAV = [
   { href: "/strength", label: "強み" },
   { href: "/price", label: "料金" },
   { href: "/flow", label: "流れ" },
+  { href: "/blog", label: "ブログ" },
   { href: "/faq", label: "FAQ" },
 ];
 

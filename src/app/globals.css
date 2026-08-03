@@ -5,3 +5,10 @@ body{margin:0;background:#f4f6f8;color:#0e1b2c;font-family:var(--font-body);-web
 a{color:#0e1b2c;text-decoration:none;}
 a:hover{color:#2f6bff;}
 img{max-width:100%;display:block;}
+.post-body h2{font-weight:900;font-size:1.3rem;line-height:1.6;margin:2.2em 0 0.8em;}
+.post-body h3{font-weight:900;font-size:1.1rem;line-height:1.6;margin:1.8em 0 0.6em;}
+.post-body p{margin:0 0 1.4em;}
+.post-body ul,.post-body ol{margin:0 0 1.4em;padding-left:1.4em;}
+.post-body li{margin:0 0 0.5em;}
+.post-body a{color:#2f6bff;font-weight:700;}
+.post-body strong{color:#0e1b2c;}
