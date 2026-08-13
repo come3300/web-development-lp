@@ -31,8 +31,9 @@ export function WorksGrid() {
             onClick={() => setActive(c)}
             style={{
               cursor: "pointer",
-              border: active === c ? "1.5px solid #0e1b2c" : "1.5px solid rgba(14,27,44,0.15)",
-              background: active === c ? "#0e1b2c" : "transparent",
+              border: active === c ? "1.5px solid #0e1b2c" : "1.5px solid rgba(14,27,44,0.10)",
+              borderRadius: 999,
+              background: active === c ? "linear-gradient(135deg,#0e1b2c 0%,#1c2f57 100%)" : "transparent",
               color: active === c ? "#fff" : "#0e1b2c",
               fontWeight: 700,
               fontSize: "0.82rem",
@@ -51,7 +52,7 @@ export function WorksGrid() {
             <div style={{ height: 220 }}><ImagePlaceholder label={`実績サムネイル ${i + 1}`} /></div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#5a6b80" }}><span>{w.cat}</span><span>·</span><span>{w.y}</span></div>
             <h3 style={{ fontWeight: 900, fontSize: "1.1rem", margin: 0, lineHeight: 1.5 }}>{w.title}</h3>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8, borderTop: "1px solid rgba(14,27,44,0.12)", paddingTop: 14 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, borderTop: "1px solid rgba(14,27,44,0.08)", paddingTop: 14 }}>
               <p style={{ fontSize: "0.82rem", lineHeight: 1.8, color: "#3c4a5c", margin: 0 }}><span style={{ fontWeight: 700, color: "#0e1b2c" }}>課題　</span>{w.challenge}</p>
               <p style={{ fontSize: "0.82rem", lineHeight: 1.8, color: "#3c4a5c", margin: 0 }}><span style={{ fontWeight: 700, color: "#0e1b2c" }}>施策　</span>{w.solution}</p>
               <p style={{ fontSize: "0.85rem", lineHeight: 1.8, color: "#2f6bff", fontWeight: 700, margin: 0 }}><span style={{ color: "#0e1b2c" }}>成果　</span>{w.result}</p>

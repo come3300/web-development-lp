@@ -116,16 +116,13 @@ gray-matter, remark, remark-html   # 投稿機能（フェーズ1）
 2. ダッシュボードの「API Keys」から新しいAPIキーを発行する（例: `re_xxxxxxxx`）
 3. このキーは一度しか表示されないので、発行時に控えておく
 
-### 2. 送信元ドメインの認証（DNS設定）
+### 2. 送信元設定（サンドボックスモードで運用）
 
-Resendはデフォルトの `onboarding@resend.dev` からもテスト送信できますが、実運用では自社ドメイン（例: `tsukuru-web.com`）から送信できるようにする必要があります。
+本サイトは `web-development-lp.vercel.app` のような無料のVercelサブドメインで公開しており、外部ドメイン認証（DNSのTXT/CNAME追加）ができない。そのため、独自ドメイン認証は行わず、Resendのサンドボックスモードをそのまま採用する。
 
-1. Resendダッシュボードの「Domains」で送信元に使いたいドメインを追加する
-2. 表示されるSPF・DKIM用のDNSレコード（TXT/CNAME）を、ドメインを管理しているサービス（お名前.com、Cloudflare、Vercelドメイン管理など）に追加する
-3. DNS反映後、Resend側で「Verified」になっていることを確認する
-4. 認証済みドメインのアドレス（例: `info@tsukuru-web.com`）を後述の `CONTACT_FROM_EMAIL` に設定する
-
-ドメイン認証が済むまでは、`CONTACT_FROM_EMAIL` を `onboarding@resend.dev` にしておけばテスト送信は可能です（送信先はResendアカウント登録時のメールアドレスに限定される点に注意）。
+- `CONTACT_FROM_EMAIL` は認証不要の `onboarding@resend.dev` を使う（追加設定不要・完全無料）
+- サンドボックスモードでは送信先が「Resendアカウント登録時のメールアドレス」に限定されるため、`CONTACT_TO_EMAIL` は**必ずResendアカウントを作成したメールアドレスと同じもの**を設定する（問い合わせ通知を運営者自身が受け取る用途なので、この制約でも運用上問題ない）
+- 将来的に独自ドメインを取得・運用するようになった場合は、Resendダッシュボードの「Domains」でドメインを追加し、表示されるSPF・DKIMのDNSレコードを設定 → `CONTACT_FROM_EMAIL` を認証済みアドレスに変更すれば、任意の宛先に送信できるようになる（現時点では不要）
 
 ### 3. 環境変数の設定（ローカル）
 
@@ -133,9 +130,9 @@ Resendはデフォルトの `onboarding@resend.dev` からもテスト送信で�
 
 ```
 RESEND_API_KEY=re_xxxxxxxx
-CONTACT_TO_EMAIL=（問い合わせを受け取りたい実際のメールアドレス）
-CONTACT_FROM_EMAIL=（Resendで認証済みの送信元アドレス。未認証ならonboarding@resend.dev）
-NEXT_PUBLIC_SITE_URL=https://（本番で使う予定のドメイン）
+CONTACT_TO_EMAIL=（Resendアカウント登録に使った、実際に受け取りたいメールアドレス）
+CONTACT_FROM_EMAIL=onboarding@resend.dev
+NEXT_PUBLIC_SITE_URL=https://web-development-lp.vercel.app
 ```
 
 `.env.local` は `.gitignore` 対象なのでコミットされません。設定後、開発サーバーを再起動してください。
@@ -147,8 +144,9 @@ NEXT_PUBLIC_SITE_URL=https://（本番で使う予定のドメイン）
 ### 5. 動作確認
 
 1. 本番相当の環境で実際にフォームから送信してみて、`CONTACT_TO_EMAIL` 宛にメールが届くか確認する
-2. 迷惑メールフォルダに入っていないかも確認する（ドメイン認証が済んでいれば届きやすくなる）
+2. 迷惑メールフォルダに入っていないかも確認する
 3. 返信は `replyTo` に送信者のメールアドレスを設定しているため、届いたメールにそのまま返信すれば送信者に届く
+4. サンドボックスモードのため、`CONTACT_TO_EMAIL` をResendアカウント登録メールアドレスと違うものに変更すると送信エラーになる点に注意
 
 ### 6. 記事の追加方法（投稿機能）
 

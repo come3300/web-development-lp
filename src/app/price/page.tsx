@@ -7,8 +7,8 @@ import { PageHero } from "@/components/PageHero";
 import { ContactCta } from "@/components/ContactCta";
 
 export const metadata: Metadata = {
-  title: "プラン・料金｜TSUKURU",
-  description: "TSUKURUのプラン・料金の詳細ページ。Basic/Standard/Premiumの3プランの内容、オプション費用、お支払いの流れ、料金に関するよくある質問をご紹介します。",
+  title: "プラン・料金｜WEBKURA",
+  description: "WEBKURAのプラン・料金の詳細ページ。Basic/Standard/Premiumの3プランの内容、オプション費用、お支払いの流れ、料金に関するよくある質問をご紹介します。",
 };
 
 const POINTS: [string, string, string][] = [
@@ -18,7 +18,7 @@ const POINTS: [string, string, string][] = [
 ];
 
 const COMPARE: [string, string, string][] = [
-  ["制作費用", "50万円〜150万円が目安", "5万円〜20万円〜"],
+  ["制作費用", "50万円〜150万円が目安", "5〜20万円が目安"],
   ["制作期間", "1〜3ヶ月程度", "最短1週間〜4週間"],
   ["開発体制", "営業・ディレクター経由の伝言", "現役エンジニアと直接やり取り"],
   ["カスタマイズ性", "テンプレート・パッケージ内が中心", "要望に合わせた自由な実装"],
@@ -26,12 +26,11 @@ const COMPARE: [string, string, string][] = [
 ];
 
 const OPTIONS: [string, string][] = [
-  ["ページ追加(1ページあたり)", "¥15,000〜"],
+  ["ページ追加(1ページあたり)", "¥25,000〜"],
   ["ブログ・お知らせ機能の追加", "¥30,000〜"],
   ["多言語対応(1言語あたり)", "¥50,000〜"],
-  ["写真・取材撮影ディレクション", "¥40,000〜"],
   ["ロゴ・ブランドデザイン制作", "¥50,000〜"],
-  ["公開後の月次保守・改善サポート", "¥10,000〜/月(任意)"],
+  ["公開後の月次保守・改善サポート", "¥20,000〜/月"],
 ];
 
 const PAYMENT_FLOW: [string, string][] = [
@@ -63,7 +62,7 @@ export default function PricePage() {
 
       <section style={{ padding: "clamp(70px,11vh,130px) clamp(20px,4vw,56px) 0", background: "#fff" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: 1, background: "rgba(14,27,44,0.15)", border: "1px solid rgba(14,27,44,0.15)", marginBottom: 80 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: 1, background: "rgba(14,27,44,0.10)", border: "1px solid rgba(14,27,44,0.10)", borderRadius: 16, overflow: "hidden", marginBottom: 80 }}>
             {POINTS.map(([tag, title, body]) => (
               <div key={tag} style={{ background: "#fff", padding: "28px 24px" }}>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "0.85rem", letterSpacing: "0.18em", color: "#2f6bff", marginBottom: 12 }}>{tag}</div>
@@ -76,7 +75,7 @@ export default function PricePage() {
           <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>PLANS</span>
           <h2 style={{ fontWeight: 900, fontSize: "clamp(1.8rem,3.6vw,2.8rem)", lineHeight: 1.5, margin: "16px 0 56px" }}>プラン一覧</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: "clamp(20px,2.5vw,32px)", alignItems: "start", marginBottom: 24 }}>
-            <div style={{ border: "1.5px solid #0e1b2c", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 96 }}>
+            <div style={{ border: "1.5px solid #0e1b2c", borderRadius: 20, boxShadow: "0 6px 20px rgba(14,27,44,0.05)", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 96 }}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "0.95rem", letterSpacing: "0.2em", color: "#5a6b80" }}>PLAN 01</div>
               <h3 style={{ fontWeight: 900, fontSize: "1.3rem", margin: 0 }}>Basic</h3>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", lineHeight: 1 }}>¥50,000<span style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 700 }}>〜</span></div>
@@ -84,13 +83,13 @@ export default function PricePage() {
               <p style={{ fontSize: "0.88rem", lineHeight: 1.9, color: "#3c4a5c", margin: 0, borderLeft: "2px solid #2f6bff", paddingLeft: 12 }}>最低限の情報発信をまず形にしたい方に。</p>
               <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
                 {["全6ページ(TOP/ABOUT/会社概要/サービス紹介/実績/お問い合わせ)", "スマホ対応レスポンシブデザイン", "お問い合わせフォーム設置", "基本的なSEO設定"].map((c, i, arr) => (
-                  <div key={c} style={{ display: "flex", gap: 10, padding: "10px 0", borderTop: "1px solid rgba(14,27,44,0.12)", borderBottom: i === arr.length - 1 ? "1px solid rgba(14,27,44,0.12)" : undefined, fontSize: "0.85rem", fontWeight: 500 }}><span style={{ color: "#2f6bff", fontWeight: 700 }}>■</span>{c}</div>
+                  <div key={c} style={{ display: "flex", gap: 10, padding: "10px 0", borderTop: "1px solid rgba(14,27,44,0.08)", borderBottom: i === arr.length - 1 ? "1px solid rgba(14,27,44,0.08)" : undefined, fontSize: "0.85rem", fontWeight: 500 }}><span style={{ color: "#2f6bff", fontWeight: 700 }}>■</span>{c}</div>
                 ))}
               </div>
-              <Link href="/contact" style={{ border: "1.5px solid #0e1b2c", color: "#0e1b2c", fontWeight: 700, fontSize: "0.95rem", padding: "14px 0", textAlign: "center" }}>相談する →</Link>
+              <Link href="/contact" style={{ border: "1.5px solid #0e1b2c", borderRadius: 20, boxShadow: "0 6px 20px rgba(14,27,44,0.05)", color: "#0e1b2c", fontWeight: 700, fontSize: "0.95rem", padding: "14px 0", textAlign: "center" }}>相談する →</Link>
             </div>
-            <div style={{ background: "#0e1b2c", color: "#fff", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 48, position: "relative" }}>
-              <div style={{ position: "absolute", top: 0, right: 0, background: "#2f6bff", color: "#fff", fontWeight: 700, fontSize: "0.75rem", letterSpacing: "0.14em", padding: "8px 16px" }}>RECOMMENDED</div>
+            <div style={{ background: "linear-gradient(135deg,#0e1b2c 0%,#1c2f57 100%)", color: "#fff", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 48, position: "relative" }}>
+              <div style={{ position: "absolute", top: 0, right: 0, background: "linear-gradient(135deg,#ff4d4f 0%,#2f6bff 100%)", color: "#fff", fontWeight: 700, fontSize: "0.75rem", letterSpacing: "0.14em", padding: "8px 16px" }}>RECOMMENDED</div>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "0.95rem", letterSpacing: "0.2em", color: "rgba(255,255,255,0.55)" }}>PLAN 02</div>
               <h3 style={{ fontWeight: 900, fontSize: "1.3rem", margin: 0 }}>Standard</h3>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", lineHeight: 1 }}>¥100,000<span style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 700 }}>〜</span></div>
@@ -98,12 +97,12 @@ export default function PricePage() {
               <p style={{ fontSize: "0.88rem", lineHeight: 1.9, color: "rgba(255,255,255,0.8)", margin: 0, borderLeft: "2px solid #2f6bff", paddingLeft: 12 }}>機能・ページを追加し、より訴求力のあるサイトに。</p>
               <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
                 {["Basicの内容+ページ追加(〜10ページ)", "ブログ・お知らせ機能", "アニメーション演出・独自デザイン強化", "SEO・構造化データ強化"].map((c, i, arr) => (
-                  <div key={c} style={{ display: "flex", gap: 10, padding: "10px 0", borderTop: "1px solid rgba(255,255,255,0.18)", borderBottom: i === arr.length - 1 ? "1px solid rgba(255,255,255,0.18)" : undefined, fontSize: "0.85rem", fontWeight: 500 }}><span style={{ color: "#2f6bff", fontWeight: 700 }}>■</span>{c}</div>
+                  <div key={c} style={{ display: "flex", gap: 10, padding: "10px 0", borderTop: "1px solid rgba(255,255,255,0.13)", borderBottom: i === arr.length - 1 ? "1px solid rgba(255,255,255,0.13)" : undefined, fontSize: "0.85rem", fontWeight: 500 }}><span style={{ color: "#2f6bff", fontWeight: 700 }}>■</span>{c}</div>
                 ))}
               </div>
-              <Link href="/contact" style={{ background: "#2f6bff", color: "#fff", fontWeight: 700, fontSize: "0.95rem", padding: "14px 0", textAlign: "center" }}>相談する →</Link>
+              <Link href="/contact" style={{ background: "linear-gradient(135deg,#ff4d4f 0%,#2f6bff 100%)", color: "#fff", fontWeight: 700, fontSize: "0.95rem", padding: "14px 0", textAlign: "center", borderRadius: 999 }}>相談する →</Link>
             </div>
-            <div style={{ border: "1.5px solid #0e1b2c", padding: "40px 32px 56px", display: "flex", flexDirection: "column", gap: 18, marginTop: 0 }}>
+            <div style={{ border: "1.5px solid #0e1b2c", borderRadius: 20, boxShadow: "0 6px 20px rgba(14,27,44,0.05)", padding: "40px 32px 56px", display: "flex", flexDirection: "column", gap: 18, marginTop: 0 }}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "0.95rem", letterSpacing: "0.2em", color: "#5a6b80" }}>PLAN 03</div>
               <h3 style={{ fontWeight: 900, fontSize: "1.3rem", margin: 0 }}>Premium</h3>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", lineHeight: 1 }}>¥200,000<span style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 700 }}>〜</span></div>
@@ -111,13 +110,13 @@ export default function PricePage() {
               <p style={{ fontSize: "0.88rem", lineHeight: 1.9, color: "#3c4a5c", margin: 0, borderLeft: "2px solid #2f6bff", paddingLeft: 12 }}>本格的なブランディング・集客を狙う方に。</p>
               <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
                 {["フルオーダーメイドデザイン・ページ数無制限", "CMS導入・自社更新対応", "競合調査・SEO設計・取材撮影ディレクション", "公開後1ヶ月の初期サポート込み"].map((c, i, arr) => (
-                  <div key={c} style={{ display: "flex", gap: 10, padding: "10px 0", borderTop: "1px solid rgba(14,27,44,0.12)", borderBottom: i === arr.length - 1 ? "1px solid rgba(14,27,44,0.12)" : undefined, fontSize: "0.85rem", fontWeight: 500 }}><span style={{ color: "#2f6bff", fontWeight: 700 }}>■</span>{c}</div>
+                  <div key={c} style={{ display: "flex", gap: 10, padding: "10px 0", borderTop: "1px solid rgba(14,27,44,0.08)", borderBottom: i === arr.length - 1 ? "1px solid rgba(14,27,44,0.08)" : undefined, fontSize: "0.85rem", fontWeight: 500 }}><span style={{ color: "#2f6bff", fontWeight: 700 }}>■</span>{c}</div>
                 ))}
               </div>
-              <Link href="/contact" style={{ border: "1.5px solid #0e1b2c", color: "#0e1b2c", fontWeight: 700, fontSize: "0.95rem", padding: "14px 0", textAlign: "center" }}>相談する →</Link>
+              <Link href="/contact" style={{ border: "1.5px solid #0e1b2c", borderRadius: 20, boxShadow: "0 6px 20px rgba(14,27,44,0.05)", color: "#0e1b2c", fontWeight: 700, fontSize: "0.95rem", padding: "14px 0", textAlign: "center" }}>相談する →</Link>
             </div>
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 32px", marginBottom: 80, fontSize: "0.82rem", fontWeight: 500, color: "#5a6b80", lineHeight: 1.9 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 80, fontSize: "0.82rem", fontWeight: 500, color: "#5a6b80", lineHeight: 1.9 }}>
             <span>※ 上記はプラン例です。工程ごとの詳細な内訳はお見積り時にご提示します。</span>
             <span>※ お支払いは着手金50%・公開後に残金のお振込となります。</span>
           </div>
@@ -129,9 +128,9 @@ export default function PricePage() {
           <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>OPTIONS</span>
           <h2 style={{ fontWeight: 900, fontSize: "clamp(1.6rem,3vw,2.2rem)", lineHeight: 1.5, margin: "16px 0 8px" }}>オプション費用の目安</h2>
           <p style={{ fontSize: "0.9rem", color: "#5a6b80", margin: "0 0 32px" }}>プランに含まれない要望は、以下を目安に個別お見積りします。</p>
-          <div style={{ border: "1px solid rgba(14,27,44,0.15)" }}>
+          <div style={{ border: "1px solid rgba(14,27,44,0.10)", borderRadius: 16, overflow: "hidden" }}>
             {OPTIONS.map(([label, price], i) => (
-              <div key={label} style={{ display: "flex", justifyContent: "space-between", gap: 20, padding: "18px 24px", borderTop: i === 0 ? undefined : "1px solid rgba(14,27,44,0.12)", flexWrap: "wrap" }}>
+              <div key={label} style={{ display: "flex", justifyContent: "space-between", gap: 20, padding: "18px 24px", borderTop: i === 0 ? undefined : "1px solid rgba(14,27,44,0.08)", flexWrap: "wrap" }}>
                 <span style={{ fontSize: "0.92rem", fontWeight: 700 }}>{label}</span>
                 <span style={{ fontSize: "0.92rem", fontWeight: 900, color: "#2f6bff" }}>{price}</span>
               </div>
@@ -145,15 +144,15 @@ export default function PricePage() {
           <h2 style={{ fontWeight: 900, fontSize: "1.4rem", margin: "0 0 8px" }}>一般的な制作会社との比較</h2>
           <p style={{ fontSize: "0.88rem", fontWeight: 500, color: "#5a6b80", margin: "0 0 24px" }}>同程度の規模のサイトを依頼した場合の目安です。</p>
           <div style={{ overflowX: "auto" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", border: "1px solid rgba(14,27,44,0.15)", minWidth: 640 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", border: "1px solid rgba(14,27,44,0.10)", borderRadius: 16, overflow: "hidden", minWidth: 640 }}>
               <div style={{ padding: "16px 20px", background: "#fff" }} />
-              <div style={{ padding: "16px 20px", background: "#fff", fontWeight: 900, fontSize: "0.95rem", borderLeft: "1px solid rgba(14,27,44,0.15)" }}>一般的な制作会社</div>
-              <div style={{ padding: "16px 20px", background: "#0e1b2c", color: "#fff", fontWeight: 900, fontSize: "0.95rem", borderLeft: "1px solid rgba(14,27,44,0.15)" }}>TSUKURU</div>
+              <div style={{ padding: "16px 20px", background: "#fff", fontWeight: 900, fontSize: "0.95rem", borderLeft: "1px solid rgba(14,27,44,0.10)" }}>一般的な制作会社</div>
+              <div style={{ padding: "16px 20px", background: "linear-gradient(135deg,#0e1b2c 0%,#1c2f57 100%)", color: "#fff", fontWeight: 900, fontSize: "0.95rem", borderLeft: "1px solid rgba(14,27,44,0.10)" }}>WEBKURA</div>
               {COMPARE.map(([label, agency, us], i) => (
                 <React.Fragment key={label}>
-                  <div style={{ padding: "18px 20px", background: "#fff", fontWeight: 700, fontSize: "0.88rem", borderTop: "1px solid rgba(14,27,44,0.15)", borderBottom: i === COMPARE.length - 1 ? "1px solid rgba(14,27,44,0.15)" : undefined }}>{label}</div>
-                  <div style={{ padding: "18px 20px", background: "#fff", fontSize: "0.88rem", color: "#3c4a5c", borderTop: "1px solid rgba(14,27,44,0.15)", borderLeft: "1px solid rgba(14,27,44,0.15)", borderBottom: i === COMPARE.length - 1 ? "1px solid rgba(14,27,44,0.15)" : undefined }}>{agency}</div>
-                  <div style={{ padding: "18px 20px", background: "#fff", fontSize: "0.88rem", fontWeight: 700, color: "#2f6bff", borderTop: "1px solid rgba(14,27,44,0.15)", borderLeft: "1px solid rgba(14,27,44,0.15)", borderBottom: i === COMPARE.length - 1 ? "1px solid rgba(14,27,44,0.15)" : undefined }}>{us}</div>
+                  <div style={{ padding: "18px 20px", background: "#fff", fontWeight: 700, fontSize: "0.88rem", borderTop: "1px solid rgba(14,27,44,0.10)", borderBottom: i === COMPARE.length - 1 ? "1px solid rgba(14,27,44,0.10)" : undefined }}>{label}</div>
+                  <div style={{ padding: "18px 20px", background: "#fff", fontSize: "0.88rem", color: "#3c4a5c", borderTop: "1px solid rgba(14,27,44,0.10)", borderLeft: "1px solid rgba(14,27,44,0.10)", borderBottom: i === COMPARE.length - 1 ? "1px solid rgba(14,27,44,0.10)" : undefined }}>{agency}</div>
+                  <div style={{ padding: "18px 20px", background: "#fff", fontSize: "0.88rem", fontWeight: 700, color: "#2f6bff", borderTop: "1px solid rgba(14,27,44,0.10)", borderLeft: "1px solid rgba(14,27,44,0.10)", borderBottom: i === COMPARE.length - 1 ? "1px solid rgba(14,27,44,0.10)" : undefined }}>{us}</div>
                 </React.Fragment>
               ))}
             </div>
@@ -165,10 +164,10 @@ export default function PricePage() {
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", letterSpacing: "0.2em", color: "#2f6bff" }}>PAYMENT FLOW</span>
           <h2 style={{ fontWeight: 900, fontSize: "clamp(1.6rem,3vw,2.2rem)", lineHeight: 1.5, margin: "16px 0 48px" }}>お支払いの流れ</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gap: 1, background: "rgba(14,27,44,0.15)", border: "1px solid rgba(14,27,44,0.15)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gap: 1, background: "rgba(14,27,44,0.10)", border: "1px solid rgba(14,27,44,0.10)", borderRadius: 16, overflow: "hidden" }}>
             {PAYMENT_FLOW.map(([title, body], i) => (
               <div key={title} style={{ background: "#fff", padding: "28px 22px" }}>
-                <div style={{ fontFamily: "var(--font-display)", fontSize: "1.6rem", color: "#2f6bff", marginBottom: 12 }}>{String(i + 1).padStart(2, "0")}</div>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: "1.6rem", marginBottom: 12, backgroundImage: "linear-gradient(135deg,#ff4d4f 0%,#2f6bff 100%)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>{String(i + 1).padStart(2, "0")}</div>
                 <h4 style={{ fontWeight: 900, fontSize: "0.98rem", margin: "0 0 10px" }}>{title}</h4>
                 <p style={{ fontSize: "0.82rem", lineHeight: 1.9, color: "#3c4a5c", margin: 0 }}>{body}</p>
               </div>
@@ -183,7 +182,7 @@ export default function PricePage() {
           <h2 style={{ fontWeight: 900, fontSize: "clamp(1.6rem,3vw,2.2rem)", lineHeight: 1.5, margin: "16px 0 40px" }}>料金についてのご質問</h2>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {FAQ.map(([q, a], i, arr) => (
-              <div key={q} style={{ display: "grid", gridTemplateColumns: "56px 1fr", gap: 20, padding: "28px 0", borderTop: "1px solid rgba(14,27,44,0.15)", borderBottom: i === arr.length - 1 ? "1px solid rgba(14,27,44,0.15)" : undefined }}>
+              <div key={q} style={{ display: "grid", gridTemplateColumns: "40px 1fr", gap: 10, padding: "28px 0", borderTop: "1px solid rgba(14,27,44,0.10)", borderBottom: i === arr.length - 1 ? "1px solid rgba(14,27,44,0.10)" : undefined }}>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem", color: "#2f6bff" }}>Q.</div>
                 <div><p style={{ fontWeight: 700, fontSize: "1.02rem", margin: "0 0 10px" }}>{q}</p><p style={{ fontSize: "0.9rem", lineHeight: 2, color: "#3c4a5c", margin: 0 }}>{a}</p></div>
               </div>

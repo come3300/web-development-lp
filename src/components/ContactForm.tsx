@@ -4,7 +4,8 @@ import React, { useState } from "react";
 const inputStyle: React.CSSProperties = {
   width: "100%",
   padding: "14px 16px",
-  border: "1.5px solid rgba(14,27,44,0.2)",
+  border: "1.5px solid rgba(14,27,44,0.15)",
+  borderRadius: 10,
   background: "#fff",
   color: "#0e1b2c",
   fontSize: "0.95rem",
@@ -110,7 +111,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        style={{ background: "#0e1b2c", color: "#fff", fontWeight: 700, fontSize: "1.05rem", padding: "18px 0", border: "none", cursor: status === "submitting" ? "default" : "pointer", opacity: status === "submitting" ? 0.7 : 1, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 12, fontFamily: "var(--font-body)" }}
+        style={{ background: "linear-gradient(135deg,#0e1b2c 0%,#1c2f57 100%)", color: "#fff", fontWeight: 700, fontSize: "1.05rem", padding: "18px 0", border: "none", borderRadius: 999, cursor: status === "submitting" ? "default" : "pointer", opacity: status === "submitting" ? 0.7 : 1, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 12, fontFamily: "var(--font-body)" }}
       >
         {status === "submitting" ? "送信中…" : (<>この内容で送信する<span>→</span></>)}
       </button>

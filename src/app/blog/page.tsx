@@ -6,8 +6,8 @@ import { PageHero } from "@/components/PageHero";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "ブログ・お知らせ｜TSUKURU",
-  description: "TSUKURUからのお知らせと、Web制作・SEOに関する情報を発信するブログです。",
+  title: "ブログ・お知らせ｜WEBKURA",
+  description: "WEBKURAからのお知らせと、Web制作・SEOに関する情報を発信するブログです。",
 };
 
 function formatDate(date: string) {
@@ -47,7 +47,7 @@ export default function BlogPage() {
                   gridTemplateColumns: "140px 1fr",
                   gap: "clamp(16px,3vw,32px)",
                   padding: "32px 0",
-                  borderTop: i === 0 ? "1.5px solid #0e1b2c" : "1px solid rgba(14,27,44,0.15)",
+                  borderTop: i === 0 ? "1.5px solid #0e1b2c" : "1px solid rgba(14,27,44,0.10)",
                   borderBottom: i === arr.length - 1 ? "1.5px solid #0e1b2c" : undefined,
                   color: "#0e1b2c",
                   alignItems: "start",

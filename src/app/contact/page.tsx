@@ -6,8 +6,8 @@ import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "無料相談・お問い合わせ｜TSUKURU",
-  description: "TSUKURUへの無料相談・お見積りのお問い合わせページです。新規制作・リニューアル・保守運用など、お気軽にご相談ください。",
+  title: "無料相談・お問い合わせ｜WEBKURA",
+  description: "WEBKURAへの無料相談・お見積りのお問い合わせページです。新規制作・リニューアル・保守運用など、お気軽にご相談ください。",
 };
 
 export default function ContactPage() {
@@ -34,13 +34,13 @@ export default function ContactPage() {
                 <div style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.1em", color: "#5a6b80", marginBottom: 8 }}>対応エリア</div>
                 <p style={{ margin: 0, fontSize: "0.92rem", lineHeight: 1.8 }}>全国対応(オンライン)</p>
               </div>
-              <div style={{ borderTop: "1px solid rgba(14,27,44,0.15)", paddingTop: 16 }}>
+              <div style={{ borderTop: "1px solid rgba(14,27,44,0.10)", paddingTop: 16 }}>
                 <div style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.1em", color: "#5a6b80", marginBottom: 8 }}>返信目安</div>
                 <p style={{ margin: 0, fontSize: "0.92rem", lineHeight: 1.8 }}>1〜2営業日以内にご返信します。</p>
               </div>
-              <div style={{ borderTop: "1px solid rgba(14,27,44,0.15)", paddingTop: 16 }}>
+              <div style={{ borderTop: "1px solid rgba(14,27,44,0.10)", paddingTop: 16 }}>
                 <div style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.1em", color: "#5a6b80", marginBottom: 8 }}>メールで直接連絡</div>
-                <a href="mailto:hello@tsukuru-web.example" style={{ fontSize: "0.92rem", lineHeight: 1.8, color: "#2f6bff", fontWeight: 700 }}>hello@tsukuru-web.example</a>
+                <a href="mailto: yonekura.business2026@gmail.com" style={{ fontSize: "0.92rem", lineHeight: 1.8, color: "#2f6bff", fontWeight: 700 }}>yonekura.business2026@gmail.com</a>
               </div>
             </div>
 
@@ -60,7 +60,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div style={{ border: "1px solid rgba(14,27,44,0.15)", padding: "clamp(28px,4vw,48px)", background: "#fff" }}>
+          <div style={{ border: "1px solid rgba(14,27,44,0.10)", borderRadius: 16, overflow: "hidden", padding: "clamp(28px,4vw,48px)", background: "#fff" }}>
             <ContactForm />
           </div>
         </div>

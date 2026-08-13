@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const post = await getPostBySlug(params.slug);
   if (!post) return {};
   return {
-    title: `${post.title}｜TSUKURU`,
+    title: `${post.title}｜WEBKURA`,
     description: post.excerpt,
   };
 }
@@ -51,7 +51,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             className="post-body"
             dangerouslySetInnerHTML={{ __html: post.contentHtml }}
           />
-          <div style={{ marginTop: 56, paddingTop: 24, borderTop: "1px solid rgba(14,27,44,0.15)" }}>
+          <div style={{ marginTop: 56, paddingTop: 24, borderTop: "1px solid rgba(14,27,44,0.10)" }}>
             <Link href="/blog" style={{ fontSize: "0.9rem", fontWeight: 700, color: "#0e1b2c" }}>← ブログ一覧に戻る</Link>
           </div>
         </div>
@@ -66,7 +66,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 <Link
                   key={p.slug}
                   href={`/blog/${p.slug}`}
-                  style={{ display: "block", padding: "18px 0", borderTop: "1px solid rgba(14,27,44,0.12)", borderBottom: i === arr.length - 1 ? "1px solid rgba(14,27,44,0.12)" : undefined, color: "#0e1b2c", fontWeight: 700, fontSize: "0.92rem" }}
+                  style={{ display: "block", padding: "18px 0", borderTop: "1px solid rgba(14,27,44,0.08)", borderBottom: i === arr.length - 1 ? "1px solid rgba(14,27,44,0.08)" : undefined, color: "#0e1b2c", fontWeight: 700, fontSize: "0.92rem" }}
                 >
                   {p.title}
                 </Link>

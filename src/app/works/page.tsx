@@ -6,8 +6,8 @@ import { ContactCta } from "@/components/ContactCta";
 import { WorksGrid } from "@/components/WorksGrid";
 
 export const metadata: Metadata = {
-  title: "制作実績｜TSUKURU",
-  description: "コーポレートサイト・採用サイト・LP・ECサイトなど、TSUKURUのこれまでの制作実績を業種・目的別にご紹介します。",
+  title: "制作実績｜WEBKURA",
+  description: "コーポレートサイト・採用サイト・LP・ECサイトなど、WEBKURAのこれまでの制作実績を業種・目的別にご紹介します。",
 };
 
 export default function WorksPage() {

@@ -16,7 +16,7 @@ export function FaqAccordion({ categories }: { categories: Category[] }) {
               const key = `${cat.name}-${i}`;
               const isOpen = open === key;
               return (
-                <div key={key} style={{ borderTop: i === 0 ? "1px solid rgba(14,27,44,0.15)" : undefined, borderBottom: "1px solid rgba(14,27,44,0.15)" }}>
+                <div key={key} style={{ borderTop: i === 0 ? "1px solid rgba(14,27,44,0.10)" : undefined, borderBottom: "1px solid rgba(14,27,44,0.10)" }}>
                   <button
                     onClick={() => setOpen(isOpen ? null : key)}
                     style={{ width: "100%", textAlign: "left", display: "grid", gridTemplateColumns: "56px 1fr 24px", gap: 20, padding: "24px 0", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}

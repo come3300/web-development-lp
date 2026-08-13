@@ -5,8 +5,8 @@ import { PageHero } from "@/components/PageHero";
 import { ContactCta } from "@/components/ContactCta";
 
 export const metadata: Metadata = {
-  title: "制作の流れ｜TSUKURU",
-  description: "ヒアリングから公開後の運用改善まで、TSUKURUの制作フローを工程ごとの期間目安・やること・ご用意いただくものとあわせて詳しく解説します。",
+  title: "制作の流れ｜WEBKURA",
+  description: "ヒアリングから公開後の運用改善まで、WEBKURAの制作フローを工程ごとの期間目安・やること・ご用意いただくものとあわせて詳しく解説します。",
 };
 
 const FLOW: { num: string; title: string; period: string; tasks: string[]; prepare: string }[] = [
@@ -45,8 +45,8 @@ export default function FlowPage() {
             {FLOW.map((step, i) => (
               <div key={step.num} style={{ display: "grid", gridTemplateColumns: "80px 1fr", gap: 28 }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                  <div style={{ width: 56, height: 56, borderRadius: "50%", background: "#0e1b2c", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display)", fontSize: "1.15rem", flexShrink: 0 }}>{step.num}</div>
-                  {i < FLOW.length - 1 && <div style={{ width: 2, flex: 1, background: "rgba(14,27,44,0.15)", margin: "8px 0" }} />}
+                  <div style={{ width: 56, height: 56, borderRadius: "50%", background: "#2f6bff", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display)", fontSize: "1.15rem", flexShrink: 0 }}>{step.num}</div>
+                  {i < FLOW.length - 1 && <div style={{ width: 2, flex: 1, background: "rgba(14,27,44,0.10)", margin: "8px 0" }} />}
                 </div>
                 <div style={{ paddingBottom: i === FLOW.length - 1 ? 0 : 48 }}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 14, flexWrap: "wrap", marginBottom: 16 }}>
@@ -62,7 +62,7 @@ export default function FlowPage() {
                         ))}
                       </div>
                     </div>
-                    <div style={{ border: "1px solid rgba(14,27,44,0.15)", padding: "20px 22px" }}>
+                    <div style={{ border: "1px solid rgba(14,27,44,0.10)", borderRadius: 16, overflow: "hidden", padding: "20px 22px" }}>
                       <div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", color: "#5a6b80", marginBottom: 12 }}>ご用意いただくもの</div>
                       <p style={{ fontSize: "0.85rem", lineHeight: 1.9, color: "#3c4a5c", margin: 0 }}>{step.prepare}</p>
                     </div>
@@ -80,7 +80,7 @@ export default function FlowPage() {
           <h2 style={{ fontWeight: 900, fontSize: "clamp(1.6rem,3vw,2.2rem)", lineHeight: 1.5, margin: "16px 0 40px" }}>制作の流れについてのご質問</h2>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {FAQ.map(([q, a], i, arr) => (
-              <div key={q} style={{ display: "grid", gridTemplateColumns: "56px 1fr", gap: 20, padding: "28px 0", borderTop: "1px solid rgba(14,27,44,0.15)", borderBottom: i === arr.length - 1 ? "1px solid rgba(14,27,44,0.15)" : undefined }}>
+              <div key={q} style={{ display: "grid", gridTemplateColumns: "40px 1fr", gap: 10, padding: "28px 0", borderTop: "1px solid rgba(14,27,44,0.10)", borderBottom: i === arr.length - 1 ? "1px solid rgba(14,27,44,0.10)" : undefined }}>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem", color: "#2f6bff" }}>Q.</div>
                 <div><p style={{ fontWeight: 700, fontSize: "1.02rem", margin: "0 0 10px" }}>{q}</p><p style={{ fontSize: "0.9rem", lineHeight: 2, color: "#3c4a5c", margin: 0 }}>{a}</p></div>
               </div>

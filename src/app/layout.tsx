@@ -3,8 +3,8 @@ import { fontVariables } from "@/lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "TSUKURU｜成果から逆算する、Web制作。",
-  description: "現役エンジニアが直接手がける、最短1〜2週間・低コストのホームページ制作サービス TSUKURU。",
+  title: "WEBKURA｜成果から逆算する、Web制作。",
+  description: "現役エンジニアが直接手がける、最短1〜2週間・低コストのホームページ制作サービス WEBKURA。",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

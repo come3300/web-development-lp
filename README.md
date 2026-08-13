@@ -1,4 +1,4 @@
-# TSUKURU — Next.js + TypeScript
+# WEBKURA — Next.js + TypeScript
 
 ここでデザインした「成果から逆算する、Web制作。」LP（ネイビー×ブルー、Noto Sans JP + Anton、3Dキャンバス演出付き）を、そのままNext.js (App Router) + TypeScriptへ移植したコードベースです。単一ページ構成（Hero/About/Strength/Works/Price/Flow/FAQ/Contact/Footer）をピクセル単位で再現しています。
 
