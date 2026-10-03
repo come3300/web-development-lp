@@ -18,7 +18,7 @@ const POINTS: [string, string, string][] = [
 ];
 
 const COMPARE: [string, string, string][] = [
-  ["制作費用", "50万円〜150万円が目安", "5〜20万円が目安"],
+  ["制作費用", "50万円〜150万円が目安", "7〜20万円が目安"],
   ["制作期間", "1〜3ヶ月程度", "最短1週間〜4週間"],
   ["開発体制", "営業・ディレクター経由の伝言", "現役エンジニアと直接やり取り"],
   ["カスタマイズ性", "テンプレート・パッケージ内が中心", "要望に合わせた自由な実装"],
@@ -78,7 +78,7 @@ export default function PricePage() {
             <div style={{ border: "1.5px solid #0e1b2c", borderRadius: 20, boxShadow: "0 6px 20px rgba(14,27,44,0.05)", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 18, marginTop: 96 }}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "0.95rem", letterSpacing: "0.2em", color: "#5a6b80" }}>PLAN 01</div>
               <h3 style={{ fontWeight: 900, fontSize: "1.3rem", margin: 0 }}>Basic</h3>
-              <div style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", lineHeight: 1 }}>¥50,000<span style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 700 }}>〜</span></div>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", lineHeight: 1 }}>¥70,000<span style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 700 }}>〜</span></div>
               <div style={{ fontSize: "0.8rem", fontWeight: 700, color: "#5a6b80" }}>目安納期 〜1週間</div>
               <p style={{ fontSize: "0.88rem", lineHeight: 1.9, color: "#3c4a5c", margin: 0, borderLeft: "2px solid #2f6bff", paddingLeft: 12 }}>最低限の情報発信をまず形にしたい方に。</p>
               <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>

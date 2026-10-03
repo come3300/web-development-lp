@@ -3,7 +3,7 @@ import { getAllPosts } from "@/lib/posts";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
 
-const STATIC_ROUTES = ["", "/contact", "/faq", "/flow", "/price", "/strength", "/works", "/blog"];
+const STATIC_ROUTES = ["", "/contact", "/faq", "/flow", "/monitor", "/price", "/samples", "/strength", "/works", "/blog"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries = STATIC_ROUTES.map((route) => ({
