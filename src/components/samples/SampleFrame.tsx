@@ -29,7 +29,7 @@ export function SampleFoot({ note }: { note: string }) {
           <p>{note}</p>
         </div>
         <div className="sm-foot__btns">
-          <Link href="/contact" className="sm-foot__btn">このデザインで相談する<ArrowRight size={16} /></Link>
+          <Link href="/contact" className="sm-foot__btn">お問い合わせはこちら<ArrowRight size={16} /></Link>
           <Link href="/samples" className="sm-foot__link">ほかの作成例を見る</Link>
         </div>
       </div>

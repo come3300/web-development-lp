@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SampleBar, SampleFoot } from "@/components/samples/SampleFrame";
 import { ScrollReveal } from "@/components/samples/ScrollReveal";
+import { CrayonFrame } from "@/components/samples/CrayonFrame";
 import "../samples.css";
 import "./hidamari.css";
 
@@ -23,10 +25,10 @@ const CLASS_CARDS: { tag: string; t: string; p: string }[] = [
   { tag: "満3歳児クラス", t: "つぼみ組", p: "3歳の誕生日を迎えた月から入園できるクラス。少人数でゆっくり園生活に入っていきます。" },
 ];
 
-const DAYS: { en: string; t: string; p: string; ph: string }[] = [
-  { en: "ONE DAY", t: "園の一日", p: "登園してからの自由遊び、クラスでの活動、お弁当、午後の外遊び。一日の流れは、子どもの体力と集中の波に合わせて組んでいます。急かさないことを、いちばん大事にしています。", ph: "hd-ph--g1" },
-  { en: "ANNUAL EVENTS", t: "年間行事", p: "春の遠足、夏のプールと夏まつり、秋の運動会、冬のもちつきと発表会。季節ごとの行事はすべて、日々の保育の延長線上にあります。行事のための練習漬けにはしません。", ph: "hd-ph--g2" },
-  { en: "EXTRACURRICULAR", t: "課外教室", p: "バレエ、絵画、サッカー、英語ミュージカル。降園後の時間を使って、遊びの感覚のまま芸術やスポーツに触れられる場を用意しています。希望制です。", ph: "hd-ph--g4" },
+const DAYS: { en: string; t: string; p: string; img: string; alt: string }[] = [
+  { en: "ONE DAY", t: "園の一日", p: "登園してからの自由遊び、クラスでの活動、お弁当、午後の外遊び。一日の流れは、子どもの体力と集中の波に合わせて組んでいます。急かさないことを、いちばん大事にしています。", img: "3", alt: "おやつの時間のこどもたち" },
+  { en: "ANNUAL EVENTS", t: "年間行事", p: "春の遠足、夏のプールと夏まつり、秋の運動会、冬のもちつきと発表会。季節ごとの行事はすべて、日々の保育の延長線上にあります。行事のための練習漬けにはしません。", img: "5", alt: "散歩に出かけるこどもたち" },
+  { en: "EXTRACURRICULAR", t: "課外教室", p: "バレエ、絵画、サッカー、英語ミュージカル。降園後の時間を使って、遊びの感覚のまま芸術やスポーツに触れられる場を用意しています。希望制です。", img: "7", alt: "トンネルをくぐってあそぶこども" },
 ];
 
 const FACILITY: [string, string][] = [
@@ -42,6 +44,7 @@ export default function HidamariSamplePage() {
 
       <main className="hd">
         <ScrollReveal />
+        <CrayonFrame />
 
         {/* ---------- ヘッダー ---------- */}
         <header className="hd-header">
@@ -85,9 +88,9 @@ export default function HidamariSamplePage() {
               </p>
             </div>
             <div className="hd-mv__ph">
-              <div className="hd-ph hd-ph--g1" />
-              <div className="hd-ph hd-ph--g2" />
-              <div className="hd-ph hd-ph--g3" />
+              <div className="hd-ph hd-ph--photo"><Image src="/samples/hidamari/1.webp" alt="保育室で並んで座るこどもたち" fill sizes="(max-width:900px) 45vw, 240px" priority /></div>
+              <div className="hd-ph hd-ph--photo"><Image src="/samples/hidamari/2.webp" alt="シャボン玉であそぶこどもと先生" fill sizes="(max-width:900px) 45vw, 200px" /></div>
+              <div className="hd-ph hd-ph--photo"><Image src="/samples/hidamari/7.webp" alt="トンネルをくぐってあそぶこども" fill sizes="(max-width:900px) 45vw, 200px" /></div>
             </div>
           </div>
           <span className="hd-mv__scroll">scroll</span>
@@ -139,9 +142,9 @@ export default function HidamariSamplePage() {
               </div>
             </div>
             <div className="hd-thoughts__ph" data-reveal data-delay="1">
-              <div className="hd-ph hd-ph--round hd-ph--g5" />
-              <div className="hd-ph hd-ph--round hd-ph--g2" />
-              <div className="hd-ph hd-ph--g3" />
+              <div className="hd-ph hd-ph--round hd-ph--photo"><Image src="/samples/hidamari/4.webp" alt="園庭であそぶこどもの笑顔" fill sizes="230px" /></div>
+              <div className="hd-ph hd-ph--round hd-ph--photo"><Image src="/samples/hidamari/5.webp" alt="散歩に出かけるこどもたち" fill sizes="230px" /></div>
+              <div className="hd-ph hd-ph--photo"><Image src="/samples/hidamari/3.webp" alt="おやつの時間のこどもたち" fill sizes="480px" /></div>
             </div>
           </div>
         </section>
@@ -200,7 +203,9 @@ export default function HidamariSamplePage() {
             </div>
             {DAYS.map((d) => (
               <div className="hd-days__block" key={d.t} data-reveal>
-                <div className={`hd-ph hd-days__ph ${d.ph}`} />
+                <div className="hd-ph hd-days__ph hd-ph--photo">
+                  <Image src={`/samples/hidamari/${d.img}.webp`} alt={d.alt} fill sizes="(max-width:900px) 92vw, 480px" />
+                </div>
                 <div>
                   <h3><span>{d.en}</span>{d.t}</h3>
                   <p>{d.p}</p>
@@ -222,7 +227,9 @@ export default function HidamariSamplePage() {
                 どこにいても子どもの姿が見え、職員同士も声をかけ合える設計にしました。
               </p>
             </div>
-            <div className="hd-ph hd-fac__ph hd-ph--g3" data-reveal />
+            <div className="hd-ph hd-fac__ph hd-ph--photo" data-reveal>
+              <Image src="/samples/hidamari/6.webp" alt="園舎と園庭" fill sizes="(max-width:900px) 92vw, 1060px" />
+            </div>
             <div className="hd-fac__pts">
               {FACILITY.map(([t, p], i) => (
                 <div key={t} data-reveal data-delay={i === 0 ? undefined : String(i)}>
@@ -320,7 +327,7 @@ export default function HidamariSamplePage() {
         </footer>
       </main>
 
-      <SampleFoot note="架空の幼稚園を想定して制作したサンプルです。年齢別クラスを時間軸の帯で見せる図や、英字ラベルと日本語見出しを重ねた見出し設計は、情報量が多くなりがちな園・学校・クリニックのサイトで特に効きます。写真枠は色面で仮置きしているため、実制作では園でお撮りになった写真が入ります。" />
+      <SampleFoot note="架空の幼稚園を想定して制作したサンプルです。年齢別クラスを時間軸の帯で見せる図や、英字ラベルと日本語見出しを重ねた見出し設計は、情報量が多くなりがちな園・学校・クリニックのサイトで特に効きます。掲載している写真はイメージ素材で、実制作では園でお撮りになった写真に差し替えます。" />
     </>
   );
 }

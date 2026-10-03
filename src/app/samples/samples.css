@@ -65,14 +65,30 @@
 .sm-item__btn{display:inline-flex;align-items:center;gap:9px;font-size:0.9rem;font-weight:700;color:#fff;background:#0e1b2c;border-radius:3px;padding:14px 28px;}
 .sm-item__btn:hover{background:#2f6bff;color:#fff;}
 
-/* 一覧のサムネイル代わり：各サンプルの配色と字面を、そのまま小さく見せる */
-.sm-thumb{border:1px solid rgba(14,27,44,0.12);overflow:hidden;}
-.sm-thumb__top{padding:clamp(22px,3vw,34px);min-height:180px;display:flex;flex-direction:column;justify-content:center;gap:10px;}
-.sm-thumb__label{font-size:0.7rem;letter-spacing:0.2em;font-weight:700;opacity:0.75;}
-.sm-thumb__head{font-size:clamp(1.05rem,2.2vw,1.5rem);line-height:1.55;font-weight:700;margin:0;}
-.sm-thumb__bar{display:flex;height:34px;}
-.sm-thumb__bar span{flex:1;}
+/* 一覧のサムネイル：サンプルサイト本体のファーストビューを実際に写したもの。
+   PC表示の上にスマートフォン表示を重ね、レスポンシブ対応であることも同時に伝える */
+.sm-shot{display:block;position:relative;padding:0 clamp(28px,4vw,46px) clamp(20px,3vw,30px) 0;}
+.sm-shot__pc{
+  display:block;overflow:hidden;background:#fff;
+  border:1px solid rgba(14,27,44,0.12);
+  box-shadow:0 12px 34px rgba(14,27,44,0.09);
+  transition:border-color .3s ease,box-shadow .3s ease;
+}
+.sm-shot__pc img{display:block;width:100%;height:auto;}
+.sm-shot__sp{
+  position:absolute;right:0;bottom:0;width:clamp(74px,15%,116px);
+  overflow:hidden;border-radius:12px;border:3px solid #fff;background:#fff;
+  box-shadow:0 8px 22px rgba(14,27,44,0.2);
+  transition:transform .3s ease;
+}
+.sm-shot__sp img{display:block;width:100%;height:auto;}
+.sm-shot:hover .sm-shot__pc{border-color:#2f6bff;box-shadow:0 16px 40px rgba(47,107,255,0.18);}
+.sm-shot:hover .sm-shot__sp{transform:translateY(-4px);}
+
 @media (max-width:820px){
   .sm-item{grid-template-columns:1fr;}
-  .sm-thumb{order:-1;}
+  .sm-shot{order:-1;margin-bottom:6px;}
 }
+
+/* 手描き風の枠に使うSVGフィルタの置き場。描画はしないので潰しておく */
+.sm-crayondefs{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;}

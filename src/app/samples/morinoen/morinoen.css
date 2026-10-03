@@ -42,11 +42,15 @@
 .mo-btn i::after{content:"";position:absolute;top:6px;left:5px;width:5px;height:5px;border-top:1.5px solid #fff;border-right:1.5px solid #fff;transform:rotate(45deg);}
 
 /* 写真の代わりの色面。実制作ではここに園の写真が入る */
-.mo-ph{position:relative;overflow:hidden;background:var(--cream);}
+/* 枠は角丸ではなく、手で切ったようなラフな輪郭にする（詳細は CrayonFrame.tsx） */
+.mo-ph{position:relative;overflow:hidden;background:var(--cream);filter:url(#sm-crayon);}
 .mo-ph::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.4) 1.5px,transparent 1.5px);background-size:14px 14px;}
 .mo-ph--leaf{border-radius:0 64% 0 64%;}
 .mo-ph--arch{border-radius:999px 999px 26px 26px;}
 .mo-ph--circle{border-radius:50%;}
+/* 写真が入る枠は、色面用の模様を消す */
+.mo-ph--photo::after{display:none;}
+.mo-ph img{object-fit:cover;}
 .mo-ph--soft{border-radius:26px;}
 .mo-ph--g1{background:linear-gradient(155deg,#8ecf9f 0%,#1f9f67 100%);}
 .mo-ph--g2{background:linear-gradient(155deg,#f7c76a 0%,#eb7f36 100%);}
@@ -86,11 +90,19 @@
 /* ==================== ヒーロー ==================== */
 .mo-hero{position:relative;min-height:min(88vw,760px);display:flex;align-items:flex-end;overflow:hidden;background:linear-gradient(168deg,#fdf6e6 0%,#f3efe2 40%,#eaf1e0 100%);}
 .mo-hero__ph{position:absolute;inset:0;}
-.mo-hero__sun{position:absolute;top:12%;right:14%;width:clamp(120px,17vw,240px);aspect-ratio:1;border-radius:50%;background:#f7e08a;box-shadow:0 0 0 clamp(18px,2.4vw,34px) rgba(247,224,138,0.35);}
+.mo-hero__sun{position:absolute;top:-7%;right:-3%;width:clamp(130px,19vw,290px);aspect-ratio:1;border-radius:50%;background:#f7e08a;box-shadow:0 0 0 clamp(18px,2.4vw,34px) rgba(247,224,138,0.35);}
 .mo-hero__hill{position:absolute;left:50%;bottom:0;transform:translateX(-50%);border-radius:50% 50% 0 0 / 100% 100% 0 0;}
 .mo-hero__hill--3{width:150%;height:44%;background:#cfe0b4;}
 .mo-hero__hill--2{width:118%;height:33%;background:#9ec98d;margin-left:-16%;}
 .mo-hero__hill--1{width:126%;height:23%;background:#3f9c6b;margin-left:22%;}
+/* ファーストビューの写真2枚。大きいほうを右端、小さいほうを一段下げて左に重ねる */
+.mo-hero__figs{
+  position:absolute;z-index:4;right:clamp(14px,3.5vw,60px);top:clamp(84px,13vw,150px);
+  display:flex;align-items:flex-start;gap:clamp(8px,1.4vw,18px);
+}
+.mo-hero__fig{border-radius:22px;}
+.mo-hero__fig--a{width:clamp(132px,23vw,340px);aspect-ratio:4/5;}
+.mo-hero__fig--b{width:clamp(84px,14vw,200px);aspect-ratio:3/4;margin-top:clamp(48px,9vw,130px);}
 .mo-hero__catch{position:relative;z-index:5;padding:0 clamp(20px,5vw,56px) clamp(90px,13vw,170px);}
 .mo-hero__catch p{
   margin:0 0 10px;font-size:clamp(1.15rem,3vw,2.05rem);font-weight:700;letter-spacing:0.1em;line-height:1.6;
@@ -189,8 +201,12 @@
 .mo-foot__btm{max-width:1100px;margin:clamp(30px,4vw,50px) auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.25);text-align:center;font-family:var(--font-lexend),var(--font-body);font-size:0.56rem;letter-spacing:0.2em;color:rgba(255,255,255,0.75);}
 
 /* ==================== スクロール表示（blurを解く） ==================== */
-.mo [data-reveal]{opacity:0;filter:blur(9px);transform:translateY(16px);transition:opacity 1s ease,filter 1s ease,transform 1s ease;}
-.mo [data-reveal].is-in{opacity:1;filter:none;transform:none;}
+/* 写真枠には手描き風のフィルタが載っているので、
+   ここで filter を指定すると打ち消してしまう。ぼかしは枠以外にだけかける */
+.mo [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity 1s ease,filter 1s ease,transform 1s ease;}
+.mo [data-reveal]:not(.mo-ph){filter:blur(9px);}
+.mo [data-reveal].is-in{opacity:1;transform:none;}
+.mo [data-reveal]:not(.mo-ph).is-in{filter:none;}
 .mo [data-reveal][data-delay="1"]{transition-delay:.16s;}
 .mo [data-reveal][data-delay="2"]{transition-delay:.32s;}
 .mo [data-reveal][data-delay="3"]{transition-delay:.48s;}
@@ -207,9 +223,13 @@
   .mo-life__grid,.mo-blog__list{grid-template-columns:1fr;}
   .mo-life__item{display:grid;grid-template-columns:0.8fr 1fr;gap:18px;text-align:left;align-items:center;}
   .mo-life__ph{margin:0;}
-  .mo-hero{min-height:min(120vw,560px);}
+  /* 1カラムだとキャッチと写真がぶつかるので、写真を上に寄せて小さくする */
+  .mo-hero{min-height:min(146vw,660px);}
+  .mo-hero__figs{top:clamp(70px,17vw,96px);}
+  .mo-hero__sun{display:none;}
 }
 @media (prefers-reduced-motion:reduce){
   .mo *,.mo *::before,.mo *::after{animation:none !important;transition-duration:.01ms !important;}
-  .mo [data-reveal]{opacity:1;filter:none;transform:none;}
+  .mo [data-reveal]{opacity:1;transform:none;}
+  .mo [data-reveal]:not(.mo-ph){filter:none;}
 }

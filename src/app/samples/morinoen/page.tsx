@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SampleBar, SampleFoot } from "@/components/samples/SampleFrame";
 import { ScrollReveal } from "@/components/samples/ScrollReveal";
+import { CrayonFrame } from "@/components/samples/CrayonFrame";
 import "../samples.css";
 import "./morinoen.css";
 
@@ -10,20 +12,20 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const LIFE: { ph: string; t: string; p: string }[] = [
-  { ph: "mo-ph--leaf mo-ph--g1", t: "園での一日", p: "朝の会から降園まで。こどもたちが森で過ごす一日の流れをご紹介します。" },
-  { ph: "mo-ph--arch mo-ph--g4", t: "年間行事", p: "田植え、夏の川あそび、焚き火。季節の手ざわりをそのまま行事にしています。" },
-  { ph: "mo-ph--circle mo-ph--g3", t: "写真ギャラリー", p: "園庭や保育室の様子、こどもたちの表情を写真でご覧いただけます。" },
+const LIFE: { shape: string; img: string; alt: string; t: string; p: string }[] = [
+  { shape: "mo-ph--leaf", img: "1", alt: "おやつの時間のこどもたち", t: "園での一日", p: "朝の会から降園まで。こどもたちが森で過ごす一日の流れをご紹介します。" },
+  { shape: "mo-ph--arch", img: "3", alt: "散歩に出かけるこどもたち", t: "年間行事", p: "田植え、夏の川あそび、焚き火。季節の手ざわりをそのまま行事にしています。" },
+  { shape: "mo-ph--circle", img: "7", alt: "シャボン玉であそぶこどもと保育者", t: "写真ギャラリー", p: "園庭や保育室の様子、こどもたちの表情を写真でご覧いただけます。" },
 ];
 
-const BLOG: { cat: string; date: string; t: string; ph: string }[] = [
-  { cat: "つぶやき", date: "2026.08.12", t: "8月 園長のつぶやき／裸足で歩いた日のこと", ph: "mo-ph--g2" },
-  { cat: "行事", date: "2026.07.29", t: "夏まつりを行いました。提灯はぜんぶ手づくりです", ph: "mo-ph--g3" },
-  { cat: "お知らせ", date: "2026.07.02", t: "9月の園庭開放と、未就園児親子クラスのご案内", ph: "mo-ph--g5" },
+const BLOG: { cat: string; date: string; t: string; img: string }[] = [
+  { cat: "つぶやき", date: "2026.08.12", t: "8月 園長のつぶやき／裸足で歩いた日のこと", img: "3" },
+  { cat: "行事", date: "2026.07.29", t: "夏まつりを行いました。提灯はぜんぶ手づくりです", img: "7" },
+  { cat: "お知らせ", date: "2026.07.02", t: "9月の園庭開放と、未就園児親子クラスのご案内", img: "8" },
 ];
 
 /* 横に流す写真帯。同じ配列を2回並べて途切れないループにする */
-const STRIP = ["mo-ph--g1", "mo-ph--g4", "mo-ph--g3", "mo-ph--g2", "mo-ph--g5", "mo-ph--g1", "mo-ph--g3", "mo-ph--g4"];
+const STRIP = ["1", "4", "2", "5", "7", "3", "8", "4"];
 
 export default function MorinoenSamplePage() {
   return (
@@ -32,6 +34,7 @@ export default function MorinoenSamplePage() {
 
       <main className="mo">
         <ScrollReveal />
+        <CrayonFrame />
 
         {/* ---------- ヘッダー ---------- */}
         <div className="mo-header">
@@ -55,6 +58,17 @@ export default function MorinoenSamplePage() {
             <span className="mo-hero__hill mo-hero__hill--3" />
             <span className="mo-hero__hill mo-hero__hill--2" />
             <span className="mo-hero__hill mo-hero__hill--1" />
+          </div>
+
+          {/* 参考にした園サイトはどれもファーストビューに実写を大きく置いている。
+              色面だけだと園の空気が伝わらないので、手前に2枚重ねる */}
+          <div className="mo-hero__figs">
+            <div className="mo-ph mo-ph--photo mo-hero__fig mo-hero__fig--b">
+              <Image src="/samples/morinoen/4.webp" alt="トンネルをくぐってあそぶこども" fill sizes="(max-width:640px) 32vw, 200px" />
+            </div>
+            <div className="mo-ph mo-ph--photo mo-hero__fig mo-hero__fig--a">
+              <Image src="/samples/morinoen/7.webp" alt="シャボン玉であそぶこどもと保育者" fill sizes="(max-width:640px) 46vw, 340px" priority />
+            </div>
           </div>
           <div className="mo-hero__catch">
             <p>自然と触れあう、よろこび。</p>
@@ -87,9 +101,9 @@ export default function MorinoenSamplePage() {
               明日につながる「生きるの根っこ」を、おとなも一緒に育てています。
             </p>
             <div className="mo-intro__ph">
-              <div className="mo-ph mo-ph--leaf mo-ph--g1" data-reveal />
-              <div className="mo-ph mo-ph--arch mo-ph--g4" data-reveal data-delay="1" />
-              <div className="mo-ph mo-ph--circle mo-ph--g3" data-reveal data-delay="2" />
+              <div className="mo-ph mo-ph--leaf mo-ph--photo" data-reveal><Image src="/samples/morinoen/5.webp" alt="園庭の芝生で過ごすこどもたち" fill sizes="230px" /></div>
+              <div className="mo-ph mo-ph--arch mo-ph--photo" data-reveal data-delay="1"><Image src="/samples/morinoen/3.webp" alt="散歩に出かけるこどもたちの後ろ姿" fill sizes="230px" /></div>
+              <div className="mo-ph mo-ph--circle mo-ph--photo" data-reveal data-delay="2"><Image src="/samples/morinoen/8.webp" alt="園舎のかげからのぞくこども" fill sizes="230px" /></div>
             </div>
           </div>
         </section>
@@ -104,7 +118,9 @@ export default function MorinoenSamplePage() {
             <div className="mo-life__grid">
               {LIFE.map((l, i) => (
                 <a href="#" className="mo-life__item" key={l.t} data-reveal data-delay={i === 0 ? undefined : String(i)}>
-                  <div className={`mo-ph mo-life__ph ${l.ph}`} />
+                  <div className={`mo-ph mo-life__ph mo-ph--photo ${l.shape}`}>
+                    <Image src={`/samples/morinoen/${l.img}.webp`} alt={l.alt} fill sizes="(max-width:640px) 40vw, 330px" />
+                  </div>
                   <div>
                     <h3>{l.t}</h3>
                     <p>{l.p}</p>
@@ -119,7 +135,11 @@ export default function MorinoenSamplePage() {
         {/* ---------- 写真の帯 ---------- */}
         <section className="mo-slide" aria-hidden="true">
           <div className="mo-slide__track">
-            {[...STRIP, ...STRIP].map((c, i) => <div className={`mo-ph mo-ph--soft ${c}`} key={i} />)}
+            {[...STRIP, ...STRIP].map((c, i) => (
+              <div className="mo-ph mo-ph--soft mo-ph--photo" key={i}>
+                <Image src={`/samples/morinoen/${c}.webp`} alt="" fill sizes="290px" />
+              </div>
+            ))}
           </div>
         </section>
 
@@ -156,7 +176,9 @@ export default function MorinoenSamplePage() {
         {/* ---------- 採用 ---------- */}
         <section className="mo-sec mo-recruit">
           <div className="mo-wrap mo-recruit__in">
-            <div className="mo-ph mo-ph--arch mo-recruit__ph mo-ph--g5" data-reveal />
+            <div className="mo-ph mo-ph--arch mo-recruit__ph mo-ph--photo" data-reveal>
+              <Image src="/samples/morinoen/4.webp" alt="トンネルをくぐってあそぶこども" fill sizes="(max-width:900px) 92vw, 420px" />
+            </div>
             <div data-reveal data-delay="1">
               <span className="mo-head__en" style={{ textAlign: "left" }}>STAFF RECRUITMENT</span>
               <h2 className="mo-recruit__t">こどもも大人も、<br /><em>ともに育つ園</em>でありたい。</h2>
@@ -183,7 +205,9 @@ export default function MorinoenSamplePage() {
             <div className="mo-blog__list">
               {BLOG.map((b, i) => (
                 <a href="#" className="mo-blog__item" key={b.t} data-reveal data-delay={i === 0 ? undefined : String(i)}>
-                  <div className={`mo-ph mo-ph--soft mo-blog__ph ${b.ph}`} />
+                  <div className="mo-ph mo-ph--soft mo-blog__ph mo-ph--photo">
+                    <Image src={`/samples/morinoen/${b.img}.webp`} alt="" fill sizes="(max-width:900px) 45vw, 330px" />
+                  </div>
                   <div className="mo-blog__meta">
                     <span className="mo-blog__cat">{b.cat}</span>
                     <span className="mo-blog__date">{b.date}</span>
@@ -252,7 +276,7 @@ export default function MorinoenSamplePage() {
         </footer>
       </main>
 
-      <SampleFoot note="架空の認定こども園を想定して制作したサンプルです。丸ゴシック・自然色のパレット・葉のかたちに切り抜いた写真枠といった柔らかい表現は、保育施設や教育施設、クリニック、飲食店などにもそのまま応用できます。写真枠は色面で仮置きしているため、実制作では園でお撮りになった写真が入ります。" />
+      <SampleFoot note="架空の認定こども園を想定して制作したサンプルです。丸ゴシック・自然色のパレット・葉のかたちに切り抜いた写真枠といった柔らかい表現は、保育施設や教育施設、クリニック、飲食店などにもそのまま応用できます。掲載している写真はイメージ素材で、実制作では園でお撮りになった写真に差し替えます。" />
     </>
   );
 }

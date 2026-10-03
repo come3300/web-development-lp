@@ -18,3 +18,8 @@ npm run dev   # http://localhost:3000
 1. 実績サムネイル・デバイスモックアップ画像を実素材へ（`ImagePlaceholder`を置き換え）
 2. `mailto:` リンクを実際のフォーム送信に置き換え
 3. ロゴ・会社情報を正式なものへ
+
+## サンプルサイト（/samples）
+- `src/app/samples/<slug>/` … 5本の作成例。参考サイトの型を再現し、中身は架空クライアントで書き起こしたもの
+- 一覧のサムネイル `public/samples/*.webp` は**サンプルサイト本体を実際にキャプチャした画像**
+- サンプル本体を直したらサムネイルもズレるので、`scripts/capture-sample-thumbs.mjs` で撮り直す（使い方はファイル冒頭のコメント）

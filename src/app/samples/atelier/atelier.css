@@ -21,18 +21,14 @@
 .at :focus-visible{outline:2px solid var(--pink);outline-offset:4px;}
 .at-en{font-family:var(--font-roboto),sans-serif;letter-spacing:0.04em;}
 
-/* ---- 斜めに切り抜く色面（写真の代わり。実制作ではここに写真が入る） ---- */
-.at-cut{position:relative;overflow:hidden;transform:skew(var(--sk));transform-origin:0 0;}
-.at-cut__in{width:100%;height:100%;min-width:210%;transform:skew(calc(var(--sk) * -1));transform-origin:0 0;}
-.at-fill{width:100%;height:100%;position:relative;}
-.at-fill::after{
-  content:"";position:absolute;inset:0;opacity:0.5;
-  background-image:repeating-linear-gradient(140deg,rgba(255,255,255,0.5) 0 1px,transparent 1px 9px);
-}
-.at-fill--a{background:linear-gradient(140deg,#e87859 0%,#f0ab52 38%,#c093bf 72%,#59bcd5 100%);}
-.at-fill--b{background:linear-gradient(140deg,#86ae60 0%,#8dc4c5 55%,#3995d1 100%);}
-.at-fill--c{background:linear-gradient(140deg,#c093bf 0%,#e88880 60%,#efe561 100%);}
-.at-fill--d{background:linear-gradient(140deg,#59bcd5 0%,#6cbb9e 100%);}
+/* ---- 斜めに切り抜く写真 ----
+   外枠を skew で傾け、内側を逆向きに skew して写真の傾きを戻す。
+   内側に必要な幅は「枠の幅 + 枠の高さ × tan(30°)」。いちばん縦長の枠でも145%あれば足りるので
+   160%にしている。ここを広げすぎると、同じ表示サイズでも画像を余計に引き伸ばすことになり、
+   next/image が返す幅では足りずに眠い絵になる。sizes もこの倍率で見積もること。 */
+.at-cut{position:relative;overflow:hidden;transform:skew(var(--sk));transform-origin:0 0;background:#f4f4f4;}
+.at-cut__in{position:relative;width:100%;height:100%;min-width:160%;transform:skew(calc(var(--sk) * -1));transform-origin:0 0;}
+.at-cut__in img{object-fit:cover;}
 
 /* ---- 斜辺に沿わせる英字ラベル ---- */
 .at-label{
@@ -101,15 +97,28 @@
 .at-menu__sub{margin-top:clamp(24px,4vw,48px);display:flex;gap:26px;flex-wrap:wrap;font-size:0.78rem;color:rgba(255,255,255,0.6);}
 
 /* ==================== ヒーロー ==================== */
-.at-hero{position:relative;min-height:min(86vw,780px);background:var(--paper);}
-.at-hero__visual{position:absolute;top:0;right:0;width:62%;height:min(86vw,780px);overflow:hidden;}
-.at-hero__visual .at-cut{position:absolute;top:0;left:14%;width:100%;height:100%;}
-.at-hero__cover{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+.at-hero{position:relative;min-height:min(92vw,840px);background:var(--paper);}
+/* 参考サイトのファーストビューは、斜めの面が画面いっぱいに重なって、隙間が白い斜線として残る。
+   30度で切ると高さ×0.577ぶん横に流れるので、写真の枠を画面幅いっぱいに取らないと
+   斜辺の左下に大きな白い三角ができてしまう。写真を全面に敷き、
+   その左に細い帯を2本置いて、帯のあいだを白い斜線として見せている。 */
+.at-hero__visual{position:absolute;inset:0;overflow:hidden;}
+.at-hero__visual .at-cut{position:absolute;top:0;left:31%;width:100%;height:100%;}
+.at-hero__band{position:absolute;top:0;height:100%;transform:skew(var(--sk));transform-origin:0 0;}
+.at-hero__band--1{left:24.5%;width:4%;background:#ececec;}
+.at-hero__band--2{left:20%;width:1.6%;background:linear-gradient(160deg,#efe561,#f0ab52);}
+.at-hero__visual::after{
+  content:"";position:absolute;top:0;left:0;width:100%;height:clamp(90px,13vw,170px);z-index:2;
+  background:linear-gradient(#fff 0%,rgba(255,255,255,0) 100%);opacity:0.62;pointer-events:none;
+}
+.at-hero__cover{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:3;}
 .at-hero__cover i{position:absolute;top:0;height:100%;width:34%;background:var(--paper);transform:skew(var(--sk));transform-origin:0 0;animation:atWipe 1.05s cubic-bezier(.76,0,.24,1) forwards;}
 .at-hero__cover i:nth-child(1){left:0;}
 .at-hero__cover i:nth-child(2){left:32%;animation-delay:.1s;}
 .at-hero__cover i:nth-child(3){left:64%;animation-delay:.2s;}
-@keyframes atWipe{to{transform:skew(var(--sk)) translateX(-140%);}}
+/* 斜めに切った面なので、真横に自分の幅ぶん動かしただけでは画面外に出ない。
+   下辺が height×tan(30°) ぶん右にずれている分まで送り切る必要がある。 */
+@keyframes atWipe{to{transform:skew(var(--sk)) translateX(-500%);}}
 
 .at-hero__body{position:relative;z-index:3;padding:clamp(150px,20vw,270px) clamp(20px,4vw,54px) clamp(60px,8vw,110px);max-width:min(760px,60vw);}
 .at-hero__ttl{font-weight:700;font-size:clamp(2rem,5.6vw,4rem);line-height:1.42;letter-spacing:0.01em;margin:0;}
@@ -120,8 +129,9 @@
 @keyframes atUp{to{transform:translateY(0);}}
 .at-hero__sub{margin:clamp(20px,3vw,38px) 0 0;font-size:clamp(0.82rem,1.3vw,1.05rem);font-weight:500;color:var(--ink);}
 .at-hero__txt{margin:clamp(20px,3vw,34px) 0 0;font-size:0.92rem;line-height:2.15;color:var(--sub);max-width:30em;}
-.at-hero__link{margin-top:clamp(26px,3.4vw,44px);display:inline-block;}
-.at-hero__label{top:14vw;left:86vw;}
+.at-hero__link{margin-top:clamp(26px,3.4vw,44px);}
+.at-hero__label{top:12vw;left:88vw;color:rgba(255,255,255,0.9);}
+.at-hero__label::before{background:rgba(255,255,255,0.6);}
 .at-hero__line{position:absolute;left:0;bottom:0;width:38%;height:1px;background:var(--line);}
 
 /* ==================== 事業 ==================== */
@@ -201,12 +211,20 @@
 @media (max-width:1000px){
   .at-biz__in,.at-recruit__in{grid-template-columns:1fr;}
   .at-news__in{grid-template-columns:1fr;}
+  /* 本文の折り返し幅は変えずに、斜辺のほうを右へ逃がして本文に重ならないようにする */
   .at-hero__body{max-width:none;}
+  .at-hero__visual .at-cut{left:39%;}
+  .at-hero__band--1{left:32.5%;}
+  .at-hero__band--2{left:28%;}
 }
 @media (max-width:768px){
-  .at-hero{min-height:0;}
-  .at-hero__visual{position:relative;width:100%;height:78vw;}
-  .at-hero__visual .at-cut{left:8%;}
+  /* 1カラムでは写真がヘッダーの真下に来る。ロゴは黒文字なので、
+     写真の上に重ならないようヒーロー全体を頭出しする。 */
+  .at-hero{min-height:0;padding-top:clamp(72px,19vw,104px);}
+  .at-hero__visual{position:relative;inset:auto;width:100%;height:78vw;}
+  .at-hero__visual .at-cut{left:16%;}
+  .at-hero__band--1{left:9%;width:5%;}
+  .at-hero__band--2{left:4%;width:2%;}
   .at-hero__body{padding:clamp(34px,7vw,54px) 20px 54px;}
   .at-hero__label{display:none;}
   .at-biz__skew{width:130%;margin-left:-30%;}

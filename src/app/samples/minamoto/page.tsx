@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SampleBar, SampleFoot } from "@/components/samples/SampleFrame";
 import { ScrollReveal } from "@/components/samples/ScrollReveal";
 import { LoopText } from "@/components/samples/LoopText";
@@ -12,13 +13,13 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const VALUE_CARDS: { jp: string; en: string; ph: string }[] = [
-  { jp: "私たちについて", en: "ABOUT", ph: "mi-ph--g2" },
-  { jp: "会社概要", en: "COMPANY", ph: "mi-ph--g5" },
-  { jp: "代表メッセージ", en: "MESSAGE", ph: "mi-ph--g6" },
-  { jp: "メンバー", en: "MEMBER", ph: "mi-ph--g3" },
-  { jp: "お知らせ", en: "NEWS", ph: "mi-ph--g4" },
-  { jp: "採用情報", en: "RECRUIT", ph: "mi-ph--g1" },
+const VALUE_CARDS: { jp: string; en: string; img: string; alt: string }[] = [
+  { jp: "私たちについて", en: "ABOUT", img: "about", alt: "食卓に並んだ料理" },
+  { jp: "会社概要", en: "COMPANY", img: "company", alt: "本社のある街の風景" },
+  { jp: "代表メッセージ", en: "MESSAGE", img: "message", alt: "代表のポートレート" },
+  { jp: "メンバー", en: "MEMBER", img: "member", alt: "打ち合わせをする社員" },
+  { jp: "お知らせ", en: "NEWS", img: "news", alt: "会議室" },
+  { jp: "採用情報", en: "RECRUIT", img: "recruit", alt: "本社オフィスのラウンジ" },
 ];
 
 const SALES: { jp: string; en: string }[] = [
@@ -28,34 +29,37 @@ const SALES: { jp: string; en: string }[] = [
   { jp: "環境に配慮した商品の企画・OEM製造・販売", en: "ECO FRIENDLY" },
 ];
 
-const WORKS: { cat: string; head: string; ex: string; ph: string }[] = [
+const WORKS: { cat: string; head: string; ex: string; img: string; alt: string }[] = [
   {
     cat: "商品開発",
     head: "国産原料だけでつくる、削りたての香りを閉じ込めた出汁パックを開発",
     ex: "焙煎から包装まで工程を見直し、開封時の香りが立つ配合と包材にたどり着きました。",
-    ph: "mi-ph--g2",
+    img: "work1",
+    alt: "厨房のキッチン",
   },
   {
     cat: "マーケティング支援",
     head: "老舗の乾物メーカーとともに、家庭向けブランドを新しく立ち上げ",
     ex: "業務用一本だった商品を、家庭の食卓に合う容量とパッケージに設計し直しました。",
-    ph: "mi-ph--g3",
+    img: "work2",
+    alt: "商品設計を詰める作業",
   },
   {
     cat: "OEM・環境",
     head: "紙化パッケージへの切り替えで、年間のプラスチック使用量を4.2t削減",
     ex: "中身の品質を保ちながら、包材だけを段階的に置き換える移行計画をつくりました。",
-    ph: "mi-ph--g5",
+    img: "work3",
+    alt: "海のなかを泳ぐ魚の群れ",
   },
 ];
 
-const BLOG: { cat: string; date: string; head: string; ph: string }[] = [
-  { cat: "商品開発", date: "2026.08.19", head: "「無添加」と書ける線引きは、どこにあるのか。表示ルールを一度整理してみる", ph: "mi-ph--g2" },
-  { cat: "コラム", date: "2026.08.02", head: "だしの取り方を聞かれるたび、いつも同じ話をしてしまう", ph: "mi-ph--g6" },
-  { cat: "環境", date: "2026.07.21", head: "包材を紙に替えるとき、いちばん揉めるのは中身ではなく物流だった", ph: "mi-ph--g3" },
-  { cat: "経営", date: "2026.07.04", head: "創業68年の会社で、はじめて商品企画の部署をつくった話", ph: "mi-ph--g5" },
-  { cat: "コラム", date: "2026.06.18", head: "スーパーの棚を3時間眺めていると、売れる理由が少しだけ見えてくる", ph: "mi-ph--g4" },
-  { cat: "商品開発", date: "2026.05.30", head: "試作38回目でようやく決まった、たった0.4gの配合差について", ph: "mi-ph--g1" },
+const BLOG: { cat: string; date: string; head: string; img: string }[] = [
+  { cat: "商品開発", date: "2026.08.19", head: "「無添加」と書ける線引きは、どこにあるのか。表示ルールを一度整理してみる", img: "brand1" },
+  { cat: "コラム", date: "2026.08.02", head: "だしの取り方を聞かれるたび、いつも同じ話をしてしまう", img: "mv2" },
+  { cat: "環境", date: "2026.07.21", head: "包材を紙に替えるとき、いちばん揉めるのは中身ではなく物流だった", img: "sales" },
+  { cat: "経営", date: "2026.07.04", head: "創業68年の会社で、はじめて商品企画の部署をつくった話", img: "company" },
+  { cat: "コラム", date: "2026.06.18", head: "スーパーの棚を3時間眺めていると、売れる理由が少しだけ見えてくる", img: "work2" },
+  { cat: "商品開発", date: "2026.05.30", head: "試作38回目でようやく決まった、たった0.4gの配合差について", img: "about" },
 ];
 
 const NEWS: { date: string; cat: string; head: string }[] = [
@@ -95,7 +99,9 @@ export default function MinamotoSamplePage() {
                 <a href="#" className="mi-vcard" key={c.en}>
                   <span className="mi-vcard__fig">
                     <span className="mi-vcard__inner">
-                      <span className={`mi-ph mi-ph--pillV ${c.ph}`} />
+                      <span className="mi-ph mi-ph--pillV mi-ph--photo">
+                        <Image src={`/samples/minamoto/${c.img}.webp`} alt={c.alt} fill sizes="(max-width:780px) 222px, 306px" />
+                      </span>
                       <span className="mi-vcard__label">
                         <span className="mi-vcard__jp">{c.jp}</span>
                         <span className="mi-vcard__en">{c.en}</span>
@@ -145,7 +151,9 @@ export default function MinamotoSamplePage() {
                 </ul>
               </div>
               <div className="mi-sales__fig" data-reveal data-delay="1">
-                <div className="mi-ph mi-ph--g5" />
+                <div className="mi-ph mi-ph--photo">
+                  <Image src="/samples/minamoto/brand1.webp" alt="湯に沈むだしパック" fill sizes="(max-width:900px) 92vw, 420px" />
+                </div>
               </div>
             </div>
           </div>
@@ -164,9 +172,7 @@ export default function MinamotoSamplePage() {
               水から煮出して、そのまま味噌汁の下地になります。
             </p>
             <div className="mi-brand__fig" data-reveal data-delay="1">
-              <div className="mi-ph mi-ph--g3" />
-              <div className="mi-ph mi-ph--g2" />
-              <div className="mi-ph mi-ph--g6" />
+              <div className="mi-ph mi-ph--photo"><Image src="/samples/minamoto/mv2.webp" alt="ごはんと味噌汁" fill sizes="(max-width:780px) 92vw, 560px" /></div>
             </div>
             <div className="mi-brand__btnwrap" data-reveal data-delay="2">
               <a href="#" className="mi-rbtn">
@@ -196,7 +202,9 @@ export default function MinamotoSamplePage() {
                 <li className="mi-work__item" key={w.head} data-reveal>
                   <a href="#" className="mi-work__link">
                     <span className="mi-work__fig">
-                      <span className={`mi-ph mi-ph--pillH ${w.ph}`} />
+                      <span className="mi-ph mi-ph--pillH mi-ph--photo">
+                        <Image src={`/samples/minamoto/${w.img}.webp`} alt={w.alt} fill sizes="(max-width:900px) 92vw, 320px" />
+                      </span>
                     </span>
                     <span className="mi-work__cat">{w.cat}</span>
                     <h3 className="mi-work__head">{w.head}</h3>
@@ -227,7 +235,9 @@ export default function MinamotoSamplePage() {
               {BLOG.map((b) => (
                 <a href="#" className="mi-bcard" key={b.head}>
                   <span className="mi-bcard__fig">
-                    <span className={`mi-ph ${b.ph}`} />
+                    <span className="mi-ph mi-ph--photo">
+                    <Image src={`/samples/minamoto/${b.img}.webp`} alt="" fill sizes="280px" />
+                  </span>
                   </span>
                   <span className="mi-bcard__info">
                     <span className="mi-bcard__cat">{b.cat}</span>
@@ -339,7 +349,7 @@ export default function MinamotoSamplePage() {
         </footer>
       </main>
 
-      <SampleFoot note="架空の食品卸・商品企画会社を想定して制作したサンプルです。縦組みの見出し、端が半円になるまで切り抜いた写真、白抜きに黒フチの英字ラベル、輪郭に沿って流れる英文といった型は、BtoBのメーカー・卸・商社のサイトで特に効きます。写真枠は色面で仮置きしているため、実制作ではお預かりした商品写真や社内の撮影素材が入ります。" />
+      <SampleFoot note="架空の食品卸・商品企画会社を想定して制作したサンプルです。縦組みの見出し、端が半円になるまで切り抜いた写真、白抜きに黒フチの英字ラベル、輪郭に沿って流れる英文といった型は、BtoBのメーカー・卸・商社のサイトで特に効きます。掲載している写真はイメージ素材で、実制作ではお預かりした商品写真や撮影素材に差し替えます。" />
     </>
   );
 }

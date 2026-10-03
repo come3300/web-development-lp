@@ -54,6 +54,14 @@
 .hd-ph{position:relative;overflow:hidden;border-radius:28px;background:var(--mint);}
 .hd-ph::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.45) 2px,transparent 2px);background-size:16px 16px;}
 .hd-ph--round{border-radius:50%;}
+/* 写真が入る枠は、色面用の模様を消す */
+/* 写真と文章が横に並ぶ枠だけ、角丸ではなく手で切ったようなラフな輪郭にする
+   （施設紹介の1枚など、横幅いっぱいに置いている写真は角丸のまま） */
+.hd-mv__ph .hd-ph,
+.hd-thoughts__ph .hd-ph,
+.hd-days__ph{filter:url(#sm-crayon);}
+.hd-ph--photo::after{display:none;}
+.hd-ph img{object-fit:cover;}
 .hd-ph--g1{background:linear-gradient(150deg,#a8dfa6 0%,#5dcf9a 100%);}
 .hd-ph--g2{background:linear-gradient(150deg,#ffe08a 0%,#f7ca5c 100%);}
 .hd-ph--g3{background:linear-gradient(150deg,#a5dce4 0%,#61bdc9 100%);}

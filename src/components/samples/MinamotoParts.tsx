@@ -1,5 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { LoopText } from "./LoopText";
 
 const NAV: string[] = ["私たちについて", "事業内容", "出汁ブランド『ひとしずく』", "実績", "読みもの"];
@@ -65,17 +66,14 @@ function Arrow({ size = 14, color = "currentColor" }: { size?: number; color?: s
   );
 }
 
-const MV_SLIDES: { main: string; sub: string }[] = [
-  { main: "mi-ph--g2", sub: "mi-ph--g5" },
-  { main: "mi-ph--g3", sub: "mi-ph--g6" },
-  { main: "mi-ph--g6", sub: "mi-ph--g2" },
-  { main: "mi-ph--g5", sub: "mi-ph--g3" },
+const MV_SLIDES: { main: string; alt: string }[] = [
+  { main: "/samples/minamoto/mv2.webp", alt: "炊きたてのごはんと味噌汁" },
+  { main: "/samples/minamoto/mv3.webp", alt: "店先に並ぶ野菜" },
+  { main: "/samples/minamoto/mv1.webp", alt: "夕暮れの商店街" },
+  { main: "/samples/minamoto/mv4.webp", alt: "移動販売車のある市場" },
 ];
 
-/**
- * ファーストビュー。左右2枚のスライダーが逆向きの半円で連動する。
- * 右の大きい写真が主、画面左端から覗く小さい写真が従で、同じ番号に同期して切り替わる。
- */
+/** ファーストビュー。右に大きく置いた半円の写真が、4枚をフェードで切り替える */
 export function MinamotoMv() {
   const [i, setI] = useState(0);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -105,21 +103,13 @@ export function MinamotoMv() {
           </h1>
         </div>
 
-        <div className="mi-mv__slider2" aria-hidden="true">
-          <div className="mi-mv__frame">
-            {MV_SLIDES.map((s, n) => (
-              <div className={`mi-mv__slide${n === i ? " is-on" : ""}`} key={s.sub + n}>
-                <div className={`mi-ph ${s.sub}`} />
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className="mi-mv__slider">
           <div className="mi-mv__frame">
             {MV_SLIDES.map((s, n) => (
               <div className={`mi-mv__slide${n === i ? " is-on" : ""}`} key={s.main + n}>
-                <div className={`mi-ph ${s.main}`} />
+                <div className="mi-ph mi-ph--photo">
+                  <Image src={s.main} alt={n === 0 ? s.alt : ""} fill sizes="70vw" priority={n === 0} />
+                </div>
               </div>
             ))}
           </div>

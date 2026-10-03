@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SampleBar, SampleFoot } from "@/components/samples/SampleFrame";
 import { ScrollReveal } from "@/components/samples/ScrollReveal";
 import { AtelierNav } from "@/components/samples/AtelierNav";
 import "../samples.css";
 import "./atelier.css";
+
+/* 写真の出所は docs/sample-photo-credits.md に記載。 */
+const PHOTOS = {
+  hero: { src: "/samples/atelier/hero.webp", alt: "街と緑を見おろす眺め" },
+  business: { src: "/samples/atelier/business.webp", alt: "資料を見ながら打ち合わせをするメンバー" },
+  recruit: { src: "/samples/atelier/recruit.webp", alt: "オフィスで作業するメンバー" },
+} as const;
 
 export const metadata: Metadata = {
   title: "サンプル｜STUDIO KAIRO（クリエイティブ系企業サイト）｜WEBKURA",
@@ -37,7 +45,13 @@ export default function AtelierSamplePage() {
         {/* ---------- ヒーロー ---------- */}
         <section className="at-hero">
           <div className="at-hero__visual">
-            <div className="at-cut"><div className="at-cut__in"><div className="at-fill at-fill--a" /></div></div>
+            <div className="at-cut">
+              <div className="at-cut__in">
+                <Image src={PHOTOS.hero.src} alt={PHOTOS.hero.alt} fill sizes="160vw" priority />
+              </div>
+            </div>
+            <span className="at-hero__band at-hero__band--2" />
+            <span className="at-hero__band at-hero__band--1" />
             <div className="at-hero__cover"><i /><i /><i /></div>
           </div>
 
@@ -66,7 +80,11 @@ export default function AtelierSamplePage() {
           <div className="at-biz__skew" />
           <div className="at-biz__in">
             <div className="at-biz__img" data-reveal>
-              <div className="at-cut"><div className="at-cut__in"><div className="at-fill at-fill--b" /></div></div>
+              <div className="at-cut">
+                <div className="at-cut__in">
+                  <Image src={PHOTOS.business.src} alt={PHOTOS.business.alt} fill sizes="(max-width:1000px) 155vw, 66vw" />
+                </div>
+              </div>
             </div>
             <div className="at-biz__body" data-reveal>
               <p className="at-sec__label at-en">Business Domain</p>
@@ -142,7 +160,11 @@ export default function AtelierSamplePage() {
               </a>
             </div>
             <div className="at-recruit__img" data-reveal>
-              <div className="at-cut"><div className="at-cut__in"><div className="at-fill at-fill--c" /></div></div>
+              <div className="at-cut">
+                <div className="at-cut__in">
+                  <Image src={PHOTOS.recruit.src} alt={PHOTOS.recruit.alt} fill sizes="(max-width:1000px) 155vw, 63vw" />
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -178,7 +200,7 @@ export default function AtelierSamplePage() {
         </footer>
       </main>
 
-      <SampleFoot note="架空のクリエイティブスタジオを想定して制作したサンプルです。斜めの色面・大きな余白・英字の縦ラベルといった型は、そのまま実際のご依頼にも適用できます。写真枠は色面で仮置きしているため、実制作ではお預かりした写真や撮影素材が入ります。" />
+      <SampleFoot note="架空のクリエイティブスタジオを想定して制作したサンプルです。斜めの色面・大きな余白・英字の縦ラベルといった型は、そのまま実際のご依頼にも適用できます。掲載している写真はイメージ素材で、実制作ではお預かりした写真や撮影素材に差し替えます。" />
     </>
   );
 }
